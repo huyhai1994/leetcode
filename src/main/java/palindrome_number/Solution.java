@@ -1,7 +1,8 @@
 package palindrome_number;
 
 public class Solution {
-    public static boolean isPalindrome(int x){
+    public static boolean isPalindrome(int x) {
+
         return false;
     }
 
