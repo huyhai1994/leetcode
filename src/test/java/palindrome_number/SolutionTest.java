@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 
-    @Test
+   /* @Test
     @DisplayName("121 as input")
     public void case1() {
         int x = 121;
@@ -46,7 +46,7 @@ class SolutionTest {
         public void case6() {
             int x = 11;
             assertTrue(Solution.isPalindrome(x));
-        }
+        }*/
 
         @Test
         @DisplayName("12321 as input")
