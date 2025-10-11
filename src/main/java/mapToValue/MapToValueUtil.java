@@ -11,6 +11,8 @@ public class MapToValueUtil {
             return ReportType.INVESTMENT.name();
         if (inputString.contains("PRODUCT_REVIEW") || inputString.contains("PRODUCT_REVIEW_BLOG"))
             return ReportType.PRODUCT_REVIEW.name();
+        if (inputString.contains("INDEPTH") || inputString.contains("INDEPTH_BLOG"))
+            return ReportType.INDEPTH.name();
         return "DAILY";
     }
 
