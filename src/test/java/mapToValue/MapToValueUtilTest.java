@@ -17,14 +17,26 @@ class MapToValueUtilTest {
 
     @Test
     public void case1() {
-        List<String> inputString = List.of("REPORT");
-        assertEquals("REPORT", MapToValueUtil.mapValueToString(inputString));
+        List<String> inputString = List.of("DAILY");
+        assertEquals("DAILY", MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     public void case2() {
         List<String> inputString = List.of("REPORT", "DAILY");
         assertEquals("DAILY", MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
+    public void case3() {
+        List<String> inputString = List.of("REPORT", "DAILY_BLOG");
+        assertEquals("DAILY", MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
+    public void case4() {
+        List<String> inputString = List.of("REPORT", "INVESTMENT");
+        assertEquals("INVESTMENT", MapToValueUtil.mapValueToString(inputString));
     }
 
 }
