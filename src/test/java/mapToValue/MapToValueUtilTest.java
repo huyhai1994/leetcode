@@ -17,12 +17,14 @@ class MapToValueUtilTest {
     }
 
     @Test
+    @DisplayName("General Report + Business Style [as payload]")
     public void case1() {
         List<String> inputString = List.of("DAILY");
         assertEquals("DAILY", MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
+    @DisplayName("General Report + Business Style")
     public void case2() {
         List<String> inputString = List.of("REPORT", "DAILY");
         assertEquals("DAILY", MapToValueUtil.mapValueToString(inputString));
@@ -35,8 +37,15 @@ class MapToValueUtilTest {
     }
 
     @Test
+    @DisplayName("Investment Report + Business Style [as payload]")
+    public void case4_0() {
+        List<String> inputString = List.of("INVESTMENT");
+        assertEquals("INVESTMENT", MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
     @DisplayName("Investment Report + Business Style")
-    public void case4() {
+    public void case4_1() {
         List<String> inputString = List.of("REPORT", "INVESTMENT");
         assertEquals("INVESTMENT", MapToValueUtil.mapValueToString(inputString));
     }
@@ -49,8 +58,15 @@ class MapToValueUtilTest {
     }
 
     @Test
+    @DisplayName("Review Report + Business Style [as payload]")
+    public void case6_0() {
+        List<String> inputString = List.of("PRODUCT_REVIEW");
+        assertEquals("PRODUCT_REVIEW", MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
     @DisplayName("Review Report + Business Style")
-    public void case6() {
+    public void case6_1() {
         List<String> inputString = List.of("REPORT", "PRODUCT_REVIEW");
         assertEquals("PRODUCT_REVIEW", MapToValueUtil.mapValueToString(inputString));
     }

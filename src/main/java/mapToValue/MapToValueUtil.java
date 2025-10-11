@@ -12,6 +12,7 @@ public class MapToValueUtil {
             "PRODUCT_REVIEW", ReportType.PRODUCT_REVIEW,
             "PRODUCT_REVIEW_BLOG", ReportType.PRODUCT_REVIEW,
             "INDEPTH", ReportType.INDEPTH,
+            "INDEPTH_DAILY", ReportType.INDEPTH,
             "INDEPTH_BLOG", ReportType.INDEPTH
     );
 
@@ -25,7 +26,7 @@ public class MapToValueUtil {
                 return type.name();
             }
         }
-        return "DAILY";
+        return "";
     }
 
 }
