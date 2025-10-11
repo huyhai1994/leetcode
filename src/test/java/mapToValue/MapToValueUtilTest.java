@@ -163,4 +163,20 @@ class MapToValueUtilTest {
         List<String> inputString = List.of("REPORT", "SOCIAL_MEDIA_X");
         assertEquals(ReportType.SOCIAL_MEDIA.name(), MapToValueUtil.mapValueToString(inputString));
     }
+
+    @Test
+    @DisplayName("Social Media Posting + Youtube Style [as payload]")
+    public void case20() {
+        // return result fast
+        List<String> inputString = List.of("SOCIAL_MEDIA_YOUTUBE");
+        assertEquals(ReportType.SOCIAL_MEDIA.name(), MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
+    @DisplayName("Social Media Posting + Youtube Style")
+    public void case21() {
+        // return result fast
+        List<String> inputString = List.of("REPORT", "SOCIAL_MEDIA_YOUTUBE");
+        assertEquals(ReportType.SOCIAL_MEDIA.name(), MapToValueUtil.mapValueToString(inputString));
+    }
 }

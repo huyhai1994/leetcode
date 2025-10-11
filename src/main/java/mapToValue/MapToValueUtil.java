@@ -18,7 +18,8 @@ public class MapToValueUtil {
             Map.entry("JOURNAL_NOTE", ReportType.JOURNAL_NOTE),
             Map.entry("SOCIAL_MEDIA_BLOG", ReportType.SOCIAL_MEDIA),
             Map.entry("SOCIAL_MEDIA_FACEBOOK", ReportType.SOCIAL_MEDIA),
-            Map.entry("SOCIAL_MEDIA_X", ReportType.SOCIAL_MEDIA)
+            Map.entry("SOCIAL_MEDIA_X", ReportType.SOCIAL_MEDIA),
+            Map.entry("SOCIAL_MEDIA_YOUTUBE", ReportType.SOCIAL_MEDIA)
     );
 
     public static String mapValueToString(List<String> inputString) {
