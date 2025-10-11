@@ -15,7 +15,8 @@ public class MapToValueUtil {
             Map.entry("INDEPTH_DAILY", ReportType.INDEPTH),
             Map.entry("INDEPTH_BLOG", ReportType.INDEPTH),
             Map.entry("JOURNAL_NOTE_BLOG", ReportType.JOURNAL_NOTE),
-            Map.entry("JOURNAL_NOTE", ReportType.JOURNAL_NOTE)
+            Map.entry("JOURNAL_NOTE", ReportType.JOURNAL_NOTE),
+            Map.entry("SOCIAL_MEDIA_BLOG", ReportType.SOCIAL_MEDIA)
     );
 
     public static String mapValueToString(List<String> inputString) {
