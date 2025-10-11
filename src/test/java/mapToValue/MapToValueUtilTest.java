@@ -1,5 +1,6 @@
 package mapToValue;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -34,8 +35,16 @@ class MapToValueUtilTest {
     }
 
     @Test
+    @DisplayName("Investment Report + Business Style")
     public void case4() {
         List<String> inputString = List.of("REPORT", "INVESTMENT");
+        assertEquals("INVESTMENT", MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
+    @DisplayName("Investment Report + Essay Style")
+    public void case5() {
+        List<String> inputString = List.of("REPORT", "INVESTMENT_BLOG");
         assertEquals("INVESTMENT", MapToValueUtil.mapValueToString(inputString));
     }
 
