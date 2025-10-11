@@ -48,4 +48,18 @@ class MapToValueUtilTest {
         assertEquals("INVESTMENT", MapToValueUtil.mapValueToString(inputString));
     }
 
+    @Test
+    @DisplayName("Review Report + Business Style")
+    public void case6() {
+        List<String> inputString = List.of("REPORT", "PRODUCT_REVIEW");
+        assertEquals("PRODUCT_REVIEW", MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
+    @DisplayName("Review Report + Essay Style")
+    public void case7() {
+        List<String> inputString = List.of("REPORT", "PRODUCT_REVIEW_BLOG");
+        assertEquals("PRODUCT_REVIEW", MapToValueUtil.mapValueToString(inputString));
+    }
+
 }

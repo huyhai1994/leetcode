@@ -9,6 +9,8 @@ public class MapToValueUtil {
         if (inputString.contains("DAILY") || inputString.contains("DAILY_BLOG")) return ReportType.DAILY.name();
         if (inputString.contains("INVESTMENT") || inputString.contains("INVESTMENT_BLOG"))
             return ReportType.INVESTMENT.name();
+        if (inputString.contains("PRODUCT_REVIEW") || inputString.contains("PRODUCT_REVIEW_BLOG"))
+            return ReportType.PRODUCT_REVIEW.name();
         return "DAILY";
     }
 
