@@ -98,4 +98,25 @@ class MapToValueUtilTest {
         List<String> inputString = List.of("REPORT", "INDEPTH_BLOG");
         assertEquals(ReportType.INDEPTH.name(), MapToValueUtil.mapValueToString(inputString));
     }
+
+    @Test
+    @DisplayName("Journalist Note + Business Style [as payload]")
+    public void case11() {
+        List<String> inputString = List.of("JOURNAL_NOTE_BLOG");
+        assertEquals(ReportType.JOURNAL_NOTE.name(), MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
+    @DisplayName("Journalist Note + Business Style")
+    public void case12() {
+        List<String> inputString = List.of("REPORT", "JOURNAL_NOTE_BLOG");
+        assertEquals(ReportType.JOURNAL_NOTE.name(), MapToValueUtil.mapValueToString(inputString));
+    }
+
+    @Test
+    @DisplayName("Journalist Note + Essay Style")
+    public void case13() {
+        List<String> inputString = List.of("REPORT", "JOURNAL_NOTE");
+        assertEquals(ReportType.JOURNAL_NOTE.name(), MapToValueUtil.mapValueToString(inputString));
+    }
 }

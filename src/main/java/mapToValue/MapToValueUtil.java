@@ -4,16 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 public class MapToValueUtil {
-    private static final Map<String, ReportType> KEYWORD_TO_TYPE = Map.of(
-            "DAILY", ReportType.DAILY,
-            "DAILY_BLOG", ReportType.DAILY,
-            "INVESTMENT", ReportType.INVESTMENT,
-            "INVESTMENT_BLOG", ReportType.INVESTMENT,
-            "PRODUCT_REVIEW", ReportType.PRODUCT_REVIEW,
-            "PRODUCT_REVIEW_BLOG", ReportType.PRODUCT_REVIEW,
-            "INDEPTH", ReportType.INDEPTH,
-            "INDEPTH_DAILY", ReportType.INDEPTH,
-            "INDEPTH_BLOG", ReportType.INDEPTH
+    private static final Map<String, ReportType> KEYWORD_TO_TYPE = Map.ofEntries(
+            Map.entry("DAILY", ReportType.DAILY),
+            Map.entry("DAILY_BLOG", ReportType.DAILY),
+            Map.entry("INVESTMENT", ReportType.INVESTMENT),
+            Map.entry("INVESTMENT_BLOG", ReportType.INVESTMENT),
+            Map.entry("PRODUCT_REVIEW", ReportType.PRODUCT_REVIEW),
+            Map.entry("PRODUCT_REVIEW_BLOG", ReportType.PRODUCT_REVIEW),
+            Map.entry("INDEPTH", ReportType.INDEPTH),
+            Map.entry("INDEPTH_DAILY", ReportType.INDEPTH),
+            Map.entry("INDEPTH_BLOG", ReportType.INDEPTH),
+            Map.entry("JOURNAL_NOTE_BLOG", ReportType.JOURNAL_NOTE),
+            Map.entry("JOURNAL_NOTE", ReportType.JOURNAL_NOTE)
     );
 
     public static String mapValueToString(List<String> inputString) {
