@@ -3,14 +3,26 @@ package validparentheses;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Stack;
 
 public class Solution {
     public boolean isValid(String s) {
-        Map<Character, Integer> map = new HashMap<>();
-
-        for (int i = 0; i < s.length(); i++) {
-            map.put(s.charAt(i), 1);
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) return false;
+                char top = stack.pop();
+                if (
+                        (c == ')' && top != '(')
+                                || (c == '}' && top != '{')
+                                || (c == ']' && top != '[')
+                ) {
+                    return false;
+                }
+            }
         }
-        return Objects.equals(map.get('('), map.get(')'));
+        return stack.isEmpty();
     }
 }
