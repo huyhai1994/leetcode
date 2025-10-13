@@ -1,5 +1,6 @@
 package mapToValue;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,14 +23,15 @@ public class MapToValueUtil {
             Map.entry(InputReportType.SOCIAL_MEDIA_YOUTUBE, ReportType.SOCIAL_MEDIA)
     );
 
-    public static String mapValueToString(List<InputReportType> inputString) {
+    public static List<String> mapValueToString(List<InputReportType> inputString) {
+        List<String> mediaList = new ArrayList<>();
         for (InputReportType s : inputString) {
             ReportType type = KEYWORD_TO_TYPE.get(s);
             if (type != null) {
-                return type.name();
+                mediaList.add(type.name());
             }
         }
-        return "";
+        return mediaList;
     }
 
 }
