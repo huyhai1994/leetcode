@@ -1,8 +1,9 @@
 package mapToValue;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MapToValueUtil {
     private static final Map<InputReportType, ReportType> KEYWORD_TO_TYPE = Map.ofEntries(
@@ -24,13 +25,12 @@ public class MapToValueUtil {
     );
 
     public static List<String> mapValueToString(List<InputReportType> inputString) {
-        List<String> mediaList = new ArrayList<>();
-        for (InputReportType s : inputString) {
-            ReportType type = KEYWORD_TO_TYPE.get(s);
-            if (type != null) {
-                mediaList.add(type.name());
-            }
-        }
+        List<String> mediaList;
+        mediaList = inputString.stream()
+                .map(KEYWORD_TO_TYPE::get)
+                .filter(Objects::nonNull)
+                .map(ReportType::name)
+                .collect(Collectors.toList());
         return mediaList;
     }
 
