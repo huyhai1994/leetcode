@@ -1,17 +1,14 @@
 package search_insert_position;
 
+import java.util.stream.IntStream;
+
 public class Solution {
     public int searchInsert(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) {
-                return i;
-            }
-        }
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] < target && nums[i + 1] > target) {
-                return i + 1;
-            }
-        }
-        return nums[nums.length - 1] < target ? nums.length : 0;
+        return IntStream
+                .range(0, nums.length)
+                .filter(i -> nums[i] >= target)
+                .findFirst()
+                .orElse(nums.length);
+
     }
 }
