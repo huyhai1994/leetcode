@@ -1,7 +1,5 @@
 package length_of_last_word;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Solution {
     public int lengthOfLastWord(String s) {
