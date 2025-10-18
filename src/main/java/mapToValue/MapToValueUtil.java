@@ -26,11 +26,12 @@ public class MapToValueUtil {
 
     public static List<String> mapValueToString(List<InputReportType> inputString) {
         List<String> mediaList;
-        mediaList = inputString.stream()
-                .map(KEYWORD_TO_TYPE::get)
-                .filter(Objects::nonNull)
-                .map(ReportType::name)
-                .collect(Collectors.toList());
+        mediaList =
+                inputString.stream()
+                        .map(KEYWORD_TO_TYPE::get)
+                        .filter(Objects::nonNull)
+                        .map(ReportType::name)
+                        .collect(Collectors.toList());
         return mediaList;
     }
 
