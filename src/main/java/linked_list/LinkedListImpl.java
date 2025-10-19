@@ -24,16 +24,24 @@ public class LinkedListImpl {
         linkedList.addAtTail(8);
         linkedList.addAtTail(9);
         linkedList.addAtTail(10);
-        linkedList.printAllNodes();
+        System.out.println(linkedList.printAllNodes()
+                .toCharArray());
     }
 
 
-    public void printAllNodes() {
+    public String printAllNodes() {
+        StringBuilder sb = new StringBuilder();
         Node current = head;
         while (current != null) {
-            System.out.println(current.value);
+            sb.append(current.value);
+            if (current.next != null) {
+                sb.append(" -> ");
+            } else {
+                sb.append(" -> null");
+            }
             current = current.next;
         }
+        return String.valueOf(sb);
     }
 
     public int get(int index) {
