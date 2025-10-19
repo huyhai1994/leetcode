@@ -13,9 +13,9 @@ public class LinkedListImpl {
 
     public static void main(String[] args) {
         LinkedListImpl linkedList = new LinkedListImpl();
-        linkedList.addAtHead(1);
-        linkedList.addAtHead(2);
-        linkedList.addAtHead(3);
+        linkedList.addAtTail(1);
+        linkedList.addAtTail(2);
+        linkedList.addAtTail(3);
         System.out.println(linkedList);
     }
 
@@ -29,14 +29,20 @@ public class LinkedListImpl {
         size++;
     }
 
+    public void addAtTail(int val) {
+        Node newNode = new Node(val);
+        if (size == 0) {
+            head = newNode;
+        } else {
+            tail.next = newNode;
+        }
+        tail = newNode;
+        size++;
+    }
 
 
     @Override
     public String toString() {
-        return "LinkedListImpl{" +
-                "head=" + head +
-                ", tail=" + tail +
-                ", size=" + size +
-                '}';
+        return "LinkedListImpl{" + "head=" + head + ", tail=" + tail + ", size=" + size + '}';
     }
 }
