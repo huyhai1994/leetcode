@@ -12,23 +12,6 @@ public class LinkedListImpl {
         size = 0;
     }
 
-    public static void main(String[] args) {
-        LinkedListImpl linkedList = new LinkedListImpl();
-        linkedList.addAtHead(1);
-        linkedList.addAtHead(2);
-        linkedList.addAtHead(3);
-        linkedList.addAtHead(4);
-        linkedList.addAtHead(5);
-        linkedList.addAtHead(6);
-        linkedList.addAtTail(7);
-        linkedList.addAtTail(8);
-        linkedList.addAtTail(9);
-        linkedList.addAtTail(10);
-        System.out.println(linkedList.printAllNodes().toCharArray());
-        linkedList.deleteIndex(9);
-        System.out.println(linkedList.printAllNodes().toCharArray());
-    }
-
     public void deleteIndex(int index) {
         if (index < 0 || index >= size || head == null) {
             return;
@@ -52,6 +35,15 @@ public class LinkedListImpl {
             tail = prev;
         }
         size--;
+    }
+
+    public void addAtIndex(int index, int value) {
+        /*@TODO:
+        case 1: index < 0 -> insert at head;
+        case 2: index == size -> insert at tail;
+        case 3: index > size -> ignore;
+        otherwise: insert in middle;
+        * */
     }
 
 
