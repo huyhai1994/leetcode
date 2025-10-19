@@ -13,10 +13,20 @@ public class LinkedListImpl {
 
     public static void main(String[] args) {
         LinkedListImpl linkedList = new LinkedListImpl();
-        linkedList.addAtTail(1);
-        linkedList.addAtTail(2);
-        linkedList.addAtTail(3);
+        linkedList.addAtHead(1);
+        System.out.println(linkedList.get(0));
         System.out.println(linkedList);
+    }
+
+    public int get(int index) {
+        if (index < 0 || index >= size) {
+            return -1;
+        }
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.value;
     }
 
     public void addAtHead(int val) {
