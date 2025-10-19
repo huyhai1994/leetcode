@@ -1,5 +1,6 @@
 package linked_list;
 
+/*https://leetcode.com/problems/design-linked-list/*/
 public class LinkedListImpl {
     private Node head;
     private Node tail;
@@ -14,8 +15,25 @@ public class LinkedListImpl {
     public static void main(String[] args) {
         LinkedListImpl linkedList = new LinkedListImpl();
         linkedList.addAtHead(1);
-        System.out.println(linkedList.get(0));
-        System.out.println(linkedList);
+        linkedList.addAtHead(2);
+        linkedList.addAtHead(3);
+        linkedList.addAtHead(4);
+        linkedList.addAtHead(5);
+        linkedList.addAtHead(6);
+        linkedList.addAtTail(7);
+        linkedList.addAtTail(8);
+        linkedList.addAtTail(9);
+        linkedList.addAtTail(10);
+        linkedList.printAllNodes();
+    }
+
+
+    public void printAllNodes() {
+        Node current = head;
+        while (current != null) {
+            System.out.println(current.value);
+            current = current.next;
+        }
     }
 
     public int get(int index) {
