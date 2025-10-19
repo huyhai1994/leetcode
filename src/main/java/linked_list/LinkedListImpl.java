@@ -25,6 +25,33 @@ public class LinkedListImpl {
         linkedList.addAtTail(9);
         linkedList.addAtTail(10);
         System.out.println(linkedList.printAllNodes().toCharArray());
+        linkedList.deleteIndex(9);
+        System.out.println(linkedList.printAllNodes().toCharArray());
+    }
+
+    public void deleteIndex(int index) {
+        if (index < 0 || index >= size || head == null) {
+            return;
+        }
+        if (index == 0) {
+            head = head.next;
+            if (size == 1) {
+                tail = null;
+            }
+            size--;
+            return;
+        }
+
+        Node prev = head;
+        for (int i = 0; i < index - 1; i++) {
+            prev = prev.next;
+        }
+        Node toDelete = prev.next;
+        prev.next = toDelete.next;
+        if (toDelete == tail) {
+            tail = prev;
+        }
+        size--;
     }
 
 
