@@ -24,8 +24,7 @@ public class LinkedListImpl {
         linkedList.addAtTail(8);
         linkedList.addAtTail(9);
         linkedList.addAtTail(10);
-        System.out.println(linkedList.printAllNodes()
-                .toCharArray());
+        System.out.println(linkedList.printAllNodes().toCharArray());
     }
 
 
@@ -36,11 +35,10 @@ public class LinkedListImpl {
             sb.append(current.value);
             if (current.next != null) {
                 sb.append(" -> ");
-            } else {
-                sb.append(" -> null");
             }
             current = current.next;
         }
+        sb.append(" -> null");
         return String.valueOf(sb);
     }
 
