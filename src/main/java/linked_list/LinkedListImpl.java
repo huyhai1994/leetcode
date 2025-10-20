@@ -38,12 +38,25 @@ public class LinkedListImpl {
     }
 
     public void addAtIndex(int index, int value) {
-        /*@TODO:
-        case 1: index < 0 -> insert at head;
-        case 2: index == size -> insert at tail;
-        case 3: index > size -> ignore;
-        otherwise: insert in middle;
-        * */
+        if (index > size) {
+            return;
+        }
+        if (index <= 0) {
+            this.addAtHead(value);
+            return;
+        }
+        if (index == size) {
+            this.addAtTail(value);
+            return;
+        }
+        Node newNode = new Node(value);
+        Node prev = head;
+        for (int i = 0; i < index - 1; i++) {
+            prev = prev.next;
+        }
+        newNode.next = prev.next;
+        prev.next = newNode;
+        size++;
     }
 
 

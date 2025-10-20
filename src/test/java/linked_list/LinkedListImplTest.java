@@ -1,20 +1,28 @@
 package linked_list;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 class LinkedListImplTest {
     public static void main(String[] args) {
         LinkedListImpl linkedList = new LinkedListImpl();
-        linkedList.addAtHead(1);
-        linkedList.addAtHead(2);
-        linkedList.addAtHead(3);
-        linkedList.addAtHead(4);
-        linkedList.addAtHead(5);
-        linkedList.addAtHead(6);
-        linkedList.addAtTail(7);
-        linkedList.addAtTail(8);
-        linkedList.addAtTail(9);
-        linkedList.addAtTail(10);
-        System.out.println(linkedList.printAllNodes().toCharArray());
-        linkedList.deleteIndex(9);
-        System.out.println(linkedList.printAllNodes().toCharArray());
+        linkedList.addAtIndex(0, 1);
+        linkedList.addAtIndex(1, 2);
+        linkedList.addAtIndex(2, 3);
+        linkedList.addAtIndex(3, 5);
+        linkedList.addAtIndex(4, 6);
+        linkedList.addAtIndex(5, 7);
+        linkedList.addAtIndex(6, 8);
+        linkedList.addAtIndex(3, 4);
+
+        System.out.println(linkedList.printAllNodes());
+    }
+
+    @Test
+    void caseExceedSize() {
+        LinkedListImpl linkedList = new LinkedListImpl();
+        linkedList.addAtIndex(0, 1);
+        assertThrows(RuntimeException.class, () -> linkedList.addAtIndex(10, 2));
     }
 }
