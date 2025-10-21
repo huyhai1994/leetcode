@@ -85,6 +85,17 @@ public class LinkedListImpl {
         return current.value;
     }
 
+    public Node getNodeAtIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new RuntimeException("Invalid input...");
+        }
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current;
+    }
+
     public void addAtHead(int val) {
         Node newNode = new Node(val);
         newNode.next = head;
@@ -104,6 +115,25 @@ public class LinkedListImpl {
         }
         tail = newNode;
         size++;
+    }
+
+    public LinkedListImpl deleteDuplicates(Node head) {
+        Node current = head;
+        if (current == null) {
+            return this;
+        }
+        while (current.next != null) {
+            if (current.value == current.next.value) {
+                current.next = current.next.next;
+                size--;
+                if (current.next == null) {
+                    tail = current;
+                }
+            } else {
+                current = current.next;
+            }
+        }
+        return this;
     }
 
 
