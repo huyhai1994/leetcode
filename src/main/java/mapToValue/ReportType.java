@@ -9,5 +9,5 @@ public enum ReportType {
     SOCIAL_MEDIA,
     INDEPTH,
     PODCAST,
-    NONE;
+    NONE
 }
