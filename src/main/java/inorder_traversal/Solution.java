@@ -10,6 +10,9 @@ public class Solution {
         if (root.val == 0) return List.of();
         if (isHasOneNode) return List.of(root.val);
         result.add(root.val);
+        if (root.left != null) {
+            result.add(root.left.val);
+        }
         if (root.right != null) {
             result.add(root.right.val);
         }
