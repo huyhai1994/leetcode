@@ -22,4 +22,14 @@ class SolutionTest {
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
+
+    @Test
+    void twoNode() {
+        TreeNode right = new TreeNode(2);
+        TreeNode root = new TreeNode(1);
+        root.right = right;
+        List<Integer> expected = List.of(1, 2);
+        Solution solution = new Solution();
+        assertIterableEquals(expected, solution.inorderTraversal(root));
+    }
 }
