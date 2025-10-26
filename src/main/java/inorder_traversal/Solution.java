@@ -5,21 +5,21 @@ import java.util.List;
 
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
+        if (root == null || root.val == 0) return List.of();
+        boolean isHasOneNode = root.val != 0 && root.left == null && root.right == null;
         List<Integer> result = new ArrayList<>();
-        boolean isHasOneNode = root.left == null && root.right == null && root.val != 0;
-        if (root.val == 0) return List.of();
         if (isHasOneNode) return List.of(root.val);
-        result.add(root.val);
-        if (root.left != null) {
-            result.add(root.left.val);
-        }
-        if (root.right != null) {
-            result.add(root.right.val);
-        }
+        inOrder(root, result);
         return result;
     }
 
-    public void inOrder() {
+    public void inOrder(TreeNode node, List<Integer> result) {
+        if (node == null) return;
+
+        inOrder(node.left, result);
+        result.add(node.val);
+        inOrder(node.right, result);
+
 
     }
 }
