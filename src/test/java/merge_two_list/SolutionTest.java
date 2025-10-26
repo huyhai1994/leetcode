@@ -38,9 +38,21 @@ class SolutionTest {
     }
 
     @Test
-    void oneEmptyListWithZeroValue() {
+    void oneEmptyListAndOneListHasZeroValue() {
         list2.val = 0;
         expectedList.val = 0;
+        mergeList = new Solution().mergeTwoLists(list1, list2);
+        while (expectedList != null) {
+            assertEquals(expectedList.val, mergeList.val);
+            mergeList = mergeList.next;
+            expectedList = expectedList.next;
+        }
+    }
+
+    @Test
+    void oneEmptyListAndOneListHasValueIsOne() {
+        list2.val = 1;
+        expectedList.val = 1;
         mergeList = new Solution().mergeTwoLists(list1, list2);
         while (expectedList != null) {
             assertEquals(expectedList.val, mergeList.val);
