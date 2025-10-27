@@ -60,4 +60,19 @@ class SolutionTest {
             expectedList = expectedList.next;
         }
     }
+
+    @Test
+    void list1HasOneNodeList2HasOneNode() {
+        list1 = new ListNode(1);
+        list2 = new ListNode(2);
+        expectedList = new ListNode(1);
+        expectedList.next = new ListNode(2);
+
+        mergeList = new Solution().mergeTwoLists(list1, list2);
+        while (expectedList != null) {
+            assertEquals(expectedList.val, mergeList.val);
+            mergeList = mergeList.next;
+            expectedList = expectedList.next;
+        }
+    }
 }
