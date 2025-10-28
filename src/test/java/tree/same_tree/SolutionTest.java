@@ -78,8 +78,24 @@ class SolutionTest {
         TreeNode qLeft = new TreeNode(2);
         TreeNode qRight = new TreeNode(3);
         q.setLeft(qLeft);
-        p.setRight(qRight);
+        q.setRight(qRight);
         boolean sol = new Solution().isSameTree(p, q);
         assertTrue(sol);
+    }
+
+    @Test
+    void twoDiffThreeNodes() {
+        TreeNode p = new TreeNode(1);
+        TreeNode pLeft = new TreeNode(2);
+        TreeNode pRight = new TreeNode(3);
+        p.setLeft(pLeft);
+        p.setRight(pRight);
+        TreeNode q = new TreeNode(1);
+        TreeNode qLeft = new TreeNode(2);
+        TreeNode qRight = new TreeNode(4);
+        q.setLeft(qLeft);
+        q.setRight(qRight);
+        boolean sol = new Solution().isSameTree(p, q);
+        assertFalse(sol);
     }
 }
