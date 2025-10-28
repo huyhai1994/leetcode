@@ -4,6 +4,8 @@ import tree.TreeNode;
 
 public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        return p.getVal() == q.getVal();
+        if (p == null && q != null || q == null && p != null) return false;
+        if (p == null && q == null) return true;
+        return p.getVal() == q.getVal() && isSameTree(p.getLeft(), q.getLeft());
     }
 }
