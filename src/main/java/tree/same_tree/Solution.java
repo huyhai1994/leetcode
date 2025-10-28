@@ -4,6 +4,6 @@ import tree.TreeNode;
 
 public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        return false;
+        return p.getVal() == q.getVal();
     }
 }

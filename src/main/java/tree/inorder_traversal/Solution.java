@@ -14,9 +14,9 @@ public class Solution {
 
     public void inOrder(TreeNode node, List<Integer> result) {
         if (node == null) return;
-        inOrder(node.left, result);
-        result.add(node.val);
-        inOrder(node.right, result);
+        inOrder(node.getLeft(), result);
+        result.add(node.getVal());
+        inOrder(node.getRight(), result);
     }
 }
 
