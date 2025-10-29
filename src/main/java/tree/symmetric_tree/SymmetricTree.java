@@ -12,6 +12,7 @@ public class SymmetricTree {
         if (t1 == null && t2 == null) return true;
         if (t1 == null || t2 == null) return false;
         return t1.getVal() == t2.getVal()
-                && helper(t1.getLeft(), t2.getRight());
+                && helper(t1.getLeft(), t2.getRight())
+                && helper(t1.getRight(), t2.getRight());
     }
 }
