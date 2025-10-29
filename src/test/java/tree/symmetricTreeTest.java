@@ -45,4 +45,31 @@ class SymmetricTreeTest {
         assertFalse(sol.isSymmetric(root));
     }
 
+    @Test
+    void FourNodeNoneSymmetricTree() {
+        TreeNode root = new TreeNode(1);
+        TreeNode left = new TreeNode(2);
+        TreeNode right = new TreeNode(2);
+        TreeNode nextLeft = new TreeNode(3);
+        root.setLeft(left);
+        root.setRight(right);
+        left.setLeft(nextLeft);
+        SymmetricTree sol = new SymmetricTree();
+        assertFalse(sol.isSymmetric(root));
+    }
+
+    @Test
+    void FiveNodeSymmetricTree() {
+        TreeNode root = new TreeNode(1);
+        TreeNode left = new TreeNode(2);
+        TreeNode right = new TreeNode(2);
+        TreeNode nextLeft = new TreeNode(3);
+        TreeNode nextRight = new TreeNode(3);
+        root.setLeft(left);
+        root.setRight(right);
+        left.setLeft(nextLeft);
+        right.setRight(nextRight);
+        SymmetricTree sol = new SymmetricTree();
+        assertTrue(sol.isSymmetric(root));
+    }
 }

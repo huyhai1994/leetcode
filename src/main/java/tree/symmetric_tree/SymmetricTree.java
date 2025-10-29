@@ -5,8 +5,13 @@ import tree.TreeNode;
 public class SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
         if (root == null) return false;
-        if (root.getLeft() == null && root.getRight() == null) return true;
-        if (root.getLeft() == null || root.getRight() == null) return false;
-        return root.getLeft().getVal() == root.getRight().getVal();
+        return helper(root.getLeft(), root.getRight());
+    }
+
+    private static boolean helper(TreeNode t1, TreeNode t2) {
+        if (t1 == null && t2 == null) return true;
+        if (t1 == null || t2 == null) return false;
+        return t1.getVal() == t2.getVal()
+                && helper(t1.getLeft(), t2.getRight());
     }
 }
