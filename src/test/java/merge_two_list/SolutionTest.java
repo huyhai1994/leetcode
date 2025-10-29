@@ -1,5 +1,7 @@
 package merge_two_list;
 
+import linked_list.merge_two_list.ListNode;
+import linked_list.merge_two_list.Solution;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
