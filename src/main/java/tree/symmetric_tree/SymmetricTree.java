@@ -4,6 +4,6 @@ import tree.TreeNode;
 
 public class SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
-        return false;
+        return root != null && root.getLeft() == null && root.getRight() == null;
     }
 }
