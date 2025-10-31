@@ -7,7 +7,8 @@ import java.util.List;
 
 public class Solution {
     public TreeNode sortedArrayToBst(int[] nums) {
-        return null;
+        if (nums.length == 0) return null;
+        return new TreeNode(nums[0]);
     }
 
     public static List<Integer> inorderTraversal(TreeNode root) {

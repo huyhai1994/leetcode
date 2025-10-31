@@ -1,7 +1,6 @@
 package tree.sorted_array_to_bst;
 
 import org.junit.jupiter.api.Test;
-import tree.TreeNode;
 
 import java.util.List;
 
@@ -16,4 +15,10 @@ class SolutionTest {
         assertIterableEquals(expected, Solution.inorderTraversal(new Solution().sortedArrayToBst(array)));
     }
 
+    @Test
+    void caseOneNode() {
+        int[] array = {1};
+        List<Integer> expected = List.of(1);
+        assertIterableEquals(expected, Solution.inorderTraversal(new Solution().sortedArrayToBst(array)));
+    }
 }
