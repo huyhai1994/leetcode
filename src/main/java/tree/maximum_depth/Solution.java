@@ -10,6 +10,7 @@ public class Solution {
         if (root.getLeft() == null && root.getRight() == null) {
             return 1;
         }
+        if (root.getLeft() != null) return 2;
         return -1;
     }
 }

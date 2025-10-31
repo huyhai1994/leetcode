@@ -20,4 +20,12 @@ class SolutionTest {
         assertEquals(expectedValue, new Solution().maxDepth(null));
     }
 
+    @Test
+    void twoDepthTree() {
+        int expectedValue = 2;
+        TreeNode root = new TreeNode(1);
+        TreeNode leftNode = new TreeNode(2);
+        root.setLeft(leftNode);
+        assertEquals(expectedValue, new Solution().maxDepth(root));
+    }
 }
