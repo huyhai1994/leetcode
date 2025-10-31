@@ -36,4 +36,5 @@ public class Solution {
         result.add(node.getVal());
         inOrder(node.getRight(), result);
     }
+
 }
