@@ -21,4 +21,11 @@ class SolutionTest {
         List<Integer> expected = List.of(1);
         assertIterableEquals(expected, Solution.inorderTraversal(new Solution().sortedArrayToBst(array)));
     }
+
+    @Test
+    void caseTwoNode() {
+        int[] array = {1, 2};
+        List<Integer> expected = List.of(1, 2);
+        assertIterableEquals(expected, Solution.inorderTraversal(new Solution().sortedArrayToBst(array)));
+    }
 }
