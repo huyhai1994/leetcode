@@ -7,11 +7,21 @@ import java.util.List;
 
 public class Solution {
     public TreeNode sortedArrayToBst(int[] nums) {
+        TreeNode root;
         if (nums.length == 0) return null;
         if (nums.length == 1) return new TreeNode(nums[0]);
-        TreeNode root = new TreeNode(nums[1]);
+        if (nums.length == 2) {
+            root = new TreeNode(nums[1]);
+            TreeNode leftNode = new TreeNode(nums[0]);
+            root.setLeft(leftNode);
+            return root;
+        }
+        int rootIndex = nums.length / 2;
+        root = new TreeNode(nums[rootIndex]);
         TreeNode leftNode = new TreeNode(nums[0]);
+        TreeNode rightNode = new TreeNode(nums[2]);
         root.setLeft(leftNode);
+        root.setRight(rightNode);
         return root;
     }
 
