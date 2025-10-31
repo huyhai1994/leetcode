@@ -13,4 +13,11 @@ class SolutionTest {
         assertEquals(expectedValue, new Solution().maxDepth(root));
     }
 
+
+    @Test
+    void ZeroDepthTree() {
+        int expectedValue = 0;
+        assertEquals(expectedValue, new Solution().maxDepth(null));
+    }
+
 }

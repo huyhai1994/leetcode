@@ -4,6 +4,9 @@ import tree.TreeNode;
 
 public class Solution {
     public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
         if (root.getLeft() == null && root.getRight() == null) {
             return 1;
         }
