@@ -12,7 +12,7 @@ public class Solution {
             return 1;
         }
         depth++;
-        if (root.getLeft() != null) return ++depth;
+        if (root.getLeft() != null || root.getRight() != null) return ++depth;
         return depth;
     }
 }
