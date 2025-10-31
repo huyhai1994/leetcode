@@ -28,4 +28,13 @@ class SolutionTest {
         root.setLeft(leftNode);
         assertEquals(expectedValue, new Solution().maxDepth(root));
     }
+
+    @Test
+    void twoDepthTreeWithLeftRightNode() {
+        int expectedValue = 2;
+        TreeNode root = new TreeNode(1);
+        TreeNode rightNode = new TreeNode(3);
+        root.setRight(rightNode);
+        assertEquals(expectedValue, new Solution().maxDepth(root));
+    }
 }
