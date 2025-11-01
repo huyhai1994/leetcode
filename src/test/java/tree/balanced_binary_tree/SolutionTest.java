@@ -19,4 +19,13 @@ class SolutionTest {
         TreeNode root = new TreeNode(1);
         assertTrue(new Solution().isBalanced(root));
     }
+
+    @Test
+    @DisplayName("Tree with two node")
+    void case3() {
+        TreeNode root = new TreeNode(1);
+        TreeNode leftNode = new TreeNode(2);
+        root.setLeft(leftNode);
+        assertTrue(new Solution().isBalanced(root));
+    }
 }
