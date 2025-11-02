@@ -10,10 +10,10 @@ public class Solution {
     private int checkHeight(TreeNode root) {
         if (root == null) return 0;
         int left = checkHeight(root.getLeft());
-        if (left == -1) return -1;
         int right = checkHeight(root.getRight());
+        if (left == -1) return -1;
         if (right == -1) return -1;
-        if (left - right > 1 || right - left > 1) return -1;
+        if (Math.abs(left - right) > 1) return -1;
         return Math.max(left, right) + 1;
     }
 }

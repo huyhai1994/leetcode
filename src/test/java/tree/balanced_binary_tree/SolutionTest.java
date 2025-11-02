@@ -64,4 +64,33 @@ class SolutionTest {
         root.getLeft().getLeft().setLeft(nextNextLeftNode);
         assertFalse(new Solution().isBalanced(root));
     }
+
+    @Test
+    @DisplayName("Three-node right chain (unbalanced)")
+    void caseRightChain() {
+        TreeNode root = new TreeNode(1);
+        root.setRight(new TreeNode(2));
+        root.getRight().setRight(new TreeNode(3));
+        assertFalse(new Solution().isBalanced(root));
+    }
+
+    @Test
+    @DisplayName("Balanced but not perfect tree")
+    void caseBalancedNotPerfect() {
+        TreeNode root = new TreeNode(1);
+        root.setLeft(new TreeNode(2));
+        root.setRight(new TreeNode(3));
+        root.getLeft().setLeft(new TreeNode(4));
+        assertTrue(new Solution().isBalanced(root));
+    }
+
+    @Test
+    @DisplayName("Zig-zag tree but balanced")
+    void caseZigzagBalanced() {
+        TreeNode root = new TreeNode(1);
+        root.setLeft(new TreeNode(2));
+        root.getLeft().setRight(new TreeNode(3));
+        assertFalse(new Solution().isBalanced(root));
+    }
+
 }
