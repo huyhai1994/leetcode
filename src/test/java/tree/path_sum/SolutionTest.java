@@ -35,4 +35,13 @@ class SolutionTest {
         int targetSum = 3;
         assertTrue(new Solution().hasPathSum(root, targetSum));
     }
+
+    @Test
+    void twoNodeCaseNonEqualTargetSum() {
+        TreeNode root = new TreeNode(1);
+        TreeNode leftNode = new TreeNode(2);
+        root.setLeft(leftNode);
+        int targetSum = 5;
+        assertFalse(new Solution().hasPathSum(root, targetSum));
+    }
 }
