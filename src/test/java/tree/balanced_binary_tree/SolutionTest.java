@@ -93,4 +93,14 @@ class SolutionTest {
         assertFalse(new Solution().isBalanced(root));
     }
 
+    @Test
+    @DisplayName("Deep left skew — unbalanced")
+    void caseDeepLeftUnbalanced() {
+        TreeNode root = new TreeNode(1);
+        root.setLeft(new TreeNode(2));
+        root.getLeft().setLeft(new TreeNode(3));
+        root.getLeft().getLeft().setLeft(new TreeNode(4));
+        assertFalse(new Solution().isBalanced(root));
+    }
+
 }
