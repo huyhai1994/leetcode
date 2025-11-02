@@ -26,4 +26,13 @@ class SolutionTest {
         int targetSum = 1;
         assertTrue(new Solution().hasPathSum(root, targetSum));
     }
+
+    @Test
+    void twoNodeCaseEqualTargetSum() {
+        TreeNode root = new TreeNode(1);
+        TreeNode leftNode = new TreeNode(2);
+        root.setLeft(leftNode);
+        int targetSum = 3;
+        assertTrue(new Solution().hasPathSum(root, targetSum));
+    }
 }
