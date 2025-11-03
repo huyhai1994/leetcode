@@ -52,6 +52,17 @@ class SolutionTest {
         TreeNode rightNode = new TreeNode(3);
         root.setLeft(leftNode);
         root.setRight(rightNode);
+        int targetSum = 3;
+        assertTrue(new Solution().hasPathSum(root, targetSum));
+    }
+
+    @Test
+    void SkewedTreeWithThreeNodeEqualTargetSumCase() {
+        TreeNode root = new TreeNode(1);
+        TreeNode leftNode = new TreeNode(2);
+        TreeNode nextLeftNode = new TreeNode(3);
+        root.setLeft(leftNode);
+        leftNode.setLeft(nextLeftNode);
         int targetSum = 6;
         assertTrue(new Solution().hasPathSum(root, targetSum));
     }
