@@ -3,12 +3,12 @@ package tree.path_sum;
 import tree.TreeNode;
 
 public class Solution {
-    public boolean hasPathSum(TreeNode node, int targetSum) {
-        if (node == null) return false;
-        if (node.getLeft() == null && node.getRight() == null) {
-            return node.getVal() == targetSum;
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        if (root == null) return false;
+        if (root.getLeft() == null && root.getRight() == null) {
+            return root.getVal() == targetSum;
         }
-        int remain = targetSum - node.getVal();
-        return hasPathSum(node.getLeft(), remain) || hasPathSum(node.getRight(), remain);
+        int remain = targetSum - root.getVal();
+        return hasPathSum(root.getLeft(), remain) || hasPathSum(root.getRight(), remain);
     }
 }
