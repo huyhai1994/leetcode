@@ -7,6 +7,9 @@ public class Solution {
         if (root == null) {
             return 0;
         }
+        if (root.getLeft() == null && root.getRight() == null) {
+            return 1;
+        }
         return -1;
     }
 }

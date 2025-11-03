@@ -12,4 +12,12 @@ class SolutionTest {
         assertEquals(expectedResult, new Solution().minDepth(null));
     }
 
+    @Test
+    void OnlyOneRootNodeHasAnValueCase() {
+        int expectedResult = 1;
+        TreeNode rootNode = new TreeNode(1);
+        assertEquals(expectedResult, new Solution().minDepth(rootNode));
+
+    }
+
 }
