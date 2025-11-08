@@ -1,5 +1,10 @@
 package get_smallest_larget;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Solution {
     public static String getSmallestAndLargest(String s, int k) {
         if (s == null) throw new RuntimeException("String must be not null");
@@ -7,9 +12,16 @@ public class Solution {
         String largest = "";
         String smallest = "";
 
-        smallest = s.substring(1, 2);
-        largest = s.substring(0, 1);
 
+        List<String> dummyListString = new ArrayList<>();
+        for (int i = 0; i <= s.length() - k; i++) {
+            dummyListString.add(s.substring(i, i + k));
+        }
+        List<String> sortedList = dummyListString.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+        smallest = sortedList.get(0);
+        largest = sortedList.get(dummyListString.size() - 1);
         return smallest + "\n" + largest;
 
     }

@@ -29,4 +29,21 @@ class SolutionTest {
     }
 
 
+    @Test
+    void threeValidCharString() {
+        String s = "abc";
+        int k = 1;
+        String expected = "c\na";
+        assertEquals(expected, Solution.getSmallestAndLargest(s, k));
+    }
+
+    @Test
+    void threeValidCharStringMixedOrder() {
+        String s = "cab";
+        int k = 1;
+        String expected = "c\na";
+        assertEquals(expected, Solution.getSmallestAndLargest(s, k));
+    }
+
+    //@TODO: k = 2 case
 }
