@@ -2,6 +2,7 @@ package get_smallest_larget;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SolutionTest {
@@ -17,6 +18,14 @@ class SolutionTest {
         String s = "ab";
         int k = 2;
         assertThrows(RuntimeException.class, () -> Solution.getSmallestAndLargest(s, k));
+    }
+
+    @Test
+    void twoValidCharString() {
+        String s = "ab";
+        int k = 1;
+        String expected = "b\na";
+        assertEquals(expected, Solution.getSmallestAndLargest(s, k));
     }
 
 

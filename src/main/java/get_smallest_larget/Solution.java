@@ -7,7 +7,10 @@ public class Solution {
         String largest = "";
         String smallest = "";
 
-        return smallest + "/n" + largest;
+        smallest = s.substring(1, 2);
+        largest = s.substring(0, 1);
+
+        return smallest + "\n" + largest;
 
     }
 }
