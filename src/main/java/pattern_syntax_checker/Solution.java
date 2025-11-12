@@ -1,5 +1,6 @@
 package pattern_syntax_checker;
 
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -13,6 +14,16 @@ public class Solution {
             return VALIDATION.INVALID.toString();
         }
         return VALIDATION.VALID.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int testCases = Integer.parseInt(in.nextLine());
+        while (testCases > 0) {
+            String pattern = in.nextLine();
+            System.out.println(CheckPattern(pattern));
+            testCases--;
+        }
     }
 }
 
