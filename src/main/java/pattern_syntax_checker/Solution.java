@@ -8,11 +8,11 @@ public class Solution {
         if (inputString == null) throw new RuntimeException("non null");
         try {
             Pattern.compile(inputString);
-            return VALIDATION.VALID.toString();
         } catch (PatternSyntaxException e) {
             e.printStackTrace();
+            return VALIDATION.INVALID.toString();
         }
-        return "";
+        return VALIDATION.VALID.toString();
     }
 }
 

@@ -18,4 +18,12 @@ class SolutionTest {
         assertThrows(RuntimeException.class, () -> Solution.CheckPattern(null));
     }
 
+    @Test
+    void InvalidValue() {
+        String pattern1 = "[AZ[a-z](a-z)";
+        String pattern2 = "batcatpat(nat";
+        assertEquals(VALIDATION.INVALID.toString(), Solution.CheckPattern(pattern1));
+        assertEquals(VALIDATION.INVALID.toString(), Solution.CheckPattern(pattern2));
+    }
+
 }
