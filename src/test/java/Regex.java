@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Regex {
@@ -16,4 +17,15 @@ public class Regex {
         Matcher matcher = p.matcher(test);
         assertTrue(matcher.find());
     }
+
+    @Test
+    @DisplayName("Match letters only")
+    void NonMatchLetters() {
+        String failTest = "abcdenf192";
+        String passTest = "asdawdawdZZZZZ";
+        String regex = "[a-zA-Z]+";
+        assertFalse(failTest.matches(regex));
+        assertTrue(passTest.matches(regex));
+    }
 }
+
