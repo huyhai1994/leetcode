@@ -23,8 +23,16 @@ public class Regex {
     void NonMatchLetters() {
         String failTest = "abcdenf192";
         String passTest = "asdawdawdZZZZZ";
-        String regex = "[a-zA-Z]+";
+        String regex = "^[a-zA-Z]+$";
         assertFalse(failTest.matches(regex));
+        assertTrue(passTest.matches(regex));
+    }
+
+    @Test
+    @DisplayName("Non letter case, only number")
+    void nonLetterCase() {
+        String passTest = "1221239809809";
+        String regex = "^[^a-zA-Z]+$";
         assertTrue(passTest.matches(regex));
     }
 }
