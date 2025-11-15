@@ -32,8 +32,12 @@ public class Regex {
     @DisplayName("the preceding element must occur one or more time")
     void oneMoreTimeOccurring() {
         String passTest = "a";
+        String failTest = "aaaaaaaaaaaaa";
         String regex = "a";
+        String regexLongRepeatedChar = "a+";
         assertTrue(passTest.matches(regex));
+        assertFalse(failTest.matches(regex));
+        assertTrue(failTest.matches(regexLongRepeatedChar));
     }
 
     @Test
