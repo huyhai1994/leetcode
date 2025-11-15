@@ -29,6 +29,14 @@ public class Regex {
     }
 
     @Test
+    @DisplayName("the preceding element must occur one or more time")
+    void oneMoreTimeOccurring() {
+        String passTest = "a";
+        String regex = "a";
+        assertTrue(passTest.matches(regex));
+    }
+
+    @Test
     @DisplayName("Non letter case, only number")
     void nonLetterCase() {
         String passTest = "1221239809809";
