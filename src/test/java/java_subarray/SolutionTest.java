@@ -24,8 +24,26 @@ class SolutionTest {
     }
 
     @Test
+    void caseTwoItemWithOneNegativeCountArray() {
+        int[] array = new int[]{3, -2};
+        assertEquals(1, Solution.printNegativeSumOfSubarray(array));
+    }
+
+    @Test
+    void caseTwoItemWithTwoNegativeCountArray() {
+        int[] array = new int[]{1, -2};
+        assertEquals(2, Solution.printNegativeSumOfSubarray(array));
+    }
+
+    @Test
     void caseTwoItemWitThreeNegativeCountArray() {
         int[] array = new int[]{-1, -2};
         assertEquals(3, Solution.printNegativeSumOfSubarray(array));
     }
+
+//    @Test
+//    void caseThreeItemWithFourNegativeCount() {
+//        int[] array = new int[]{-1, -2, -3 - 4};
+//        assertEquals(3, Solution.printNegativeSumOfSubarray(array));
+//    }
 }
