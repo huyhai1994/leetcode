@@ -8,6 +8,9 @@ public class Solution {
                 count++;
             }
         }
+        if (array.length > 1 && array[0] + array[1] < 0) {
+            count++;
+        }
         return count;
     }
 }

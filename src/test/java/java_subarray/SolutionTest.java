@@ -16,4 +16,16 @@ class SolutionTest {
         int[] array = new int[]{1};
         assertEquals(0, Solution.printNegativeSumOfSubarray(array));
     }
+
+    @Test
+    void caseTwoItemWitNonNegativeCountArray() {
+        int[] array = new int[]{1, 2};
+        assertEquals(0, Solution.printNegativeSumOfSubarray(array));
+    }
+
+    @Test
+    void caseTwoItemWitThreeNegativeCountArray() {
+        int[] array = new int[]{-1, -2};
+        assertEquals(3, Solution.printNegativeSumOfSubarray(array));
+    }
 }
