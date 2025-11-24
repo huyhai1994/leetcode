@@ -1,5 +1,7 @@
 package multithread;
 
+import java.util.concurrent.TimeUnit;
+
 public class ThreadExample {
 
     public static void main(String[] args) {
@@ -9,6 +11,11 @@ public class ThreadExample {
             int i = 0;
             while (i < 1000) {
                 System.out.println(Thread.currentThread() + "I'm running ...." + i++);
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
             System.out.println("I'm shutting down, Goodbye ");
         });
