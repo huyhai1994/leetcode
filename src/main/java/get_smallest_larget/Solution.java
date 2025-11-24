@@ -3,6 +3,7 @@ package get_smallest_larget;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
     public static String getSmallestAndLargest(String s, int k) {
@@ -18,7 +19,7 @@ public class Solution {
         }
         List<String> sortedList = dummyListString.stream()
                 .sorted(Comparator.reverseOrder())
-                .toList();
+                .collect(Collectors.toList());
         smallest = sortedList.get(0);
         largest = sortedList.get(dummyListString.size() - 1);
         return smallest + "\n" + largest;

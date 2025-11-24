@@ -1,28 +1,19 @@
 package mapToValue;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MapToValueUtil {
-    private static final Map<InputReportType, ReportType> KEYWORD_TO_TYPE = Map.ofEntries(
-            Map.entry(InputReportType.DAILY, ReportType.DAILY),
-            Map.entry(InputReportType.DAILY_BLOG, ReportType.DAILY),
-            Map.entry(InputReportType.INVESTMENT, ReportType.INVESTMENT),
-            Map.entry(InputReportType.INVESTMENT_BLOG, ReportType.INVESTMENT),
-            Map.entry(InputReportType.PRODUCT_REVIEW, ReportType.PRODUCT_REVIEW),
-            Map.entry(InputReportType.PRODUCT_REVIEW_BLOG, ReportType.PRODUCT_REVIEW),
-            Map.entry(InputReportType.INDEPTH, ReportType.INDEPTH),
-            Map.entry(InputReportType.INDEPTH_DAILY, ReportType.INDEPTH),
-            Map.entry(InputReportType.INDEPTH_BLOG, ReportType.INDEPTH),
-            Map.entry(InputReportType.JOURNAL_NOTE_BLOG, ReportType.JOURNAL_NOTE),
-            Map.entry(InputReportType.JOURNAL_NOTE, ReportType.JOURNAL_NOTE),
-            Map.entry(InputReportType.SOCIAL_MEDIA_BLOG, ReportType.SOCIAL_MEDIA),
-            Map.entry(InputReportType.SOCIAL_MEDIA_FACEBOOK, ReportType.SOCIAL_MEDIA),
-            Map.entry(InputReportType.SOCIAL_MEDIA_X, ReportType.SOCIAL_MEDIA),
-            Map.entry(InputReportType.SOCIAL_MEDIA_YOUTUBE, ReportType.SOCIAL_MEDIA)
-    );
+    private static final Map<InputReportType, ReportType> KEYWORD_TO_TYPE;
+
+    static {
+        Map<InputReportType, ReportType> tempMap = new HashMap<>();
+        tempMap.put(InputReportType.DAILY, ReportType.DAILY);
+        tempMap.put(InputReportType.DAILY_BLOG, ReportType.DAILY);
+
+        KEYWORD_TO_TYPE = Collections.unmodifiableMap(tempMap);
+
+    }
 
     public static List<String> mapValueToString(List<InputReportType> inputString) {
         List<String> mediaList;
