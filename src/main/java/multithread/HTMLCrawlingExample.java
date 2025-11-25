@@ -17,31 +17,8 @@ public class HTMLCrawlingExample {
         // List to hold threads
         List<Thread> threads = new ArrayList<>();
 
-        // Create and start 10 threads (each simulating a crawl)
         for (int i = 0; i < 10; i++) {
-            final int threadId = i;
-            Thread crawlThread = new Thread(() -> {
-                try {
-                    // Simulate crawling: Fetch HTML from a dummy URL (replace with real Google search API)
-                    String urlString = "https://httpbin.org/html";  // Placeholder; use Google API for real searches
-                    URL url = new URL(urlString);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("GET");
-
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    StringBuilder html = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        html.append(line);
-                    }
-                    reader.close();
-
-                    results.put(threadId, "Thread " + threadId + " crawled: " + html.toString().substring(0, 100) + "...");
-                    System.out.println("Thread " + threadId + " finished crawling.");
-                } catch (Exception e) {
-                    results.put(threadId, "Thread " + threadId + " error: " + e.getMessage());
-                }
-            });
+            Thread crawlThread = getThread(i, results);
             threads.add(crawlThread);
             crawlThread.start();
         }
@@ -59,5 +36,31 @@ public class HTMLCrawlingExample {
         for (int i = 0; i < 10; i++) {
             System.out.println(results.get(i));
         }
+    }
+
+    private static Thread getThread(int i, ConcurrentHashMap<Integer, String> results) {
+        final int threadId = i;
+        return new Thread(() -> {
+            try {
+                // Simulate crawling: Fetch HTML from a dummy URL (replace with real Google search API)
+                String urlString = "https://httpbin.org/html";  // Placeholder; use Google API for real searches
+                URL url = new URL(urlString);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder html = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    html.append(line);
+                }
+                reader.close();
+
+                results.put(threadId, "Thread " + threadId + " crawled: " + html.toString().substring(0, 100) + "...");
+                System.out.println("Thread " + threadId + " finished crawling.");
+            } catch (Exception e) {
+                results.put(threadId, "Thread " + threadId + " error: " + e.getMessage());
+            }
+        });
     }
 }
