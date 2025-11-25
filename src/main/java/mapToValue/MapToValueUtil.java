@@ -10,9 +10,7 @@ public class MapToValueUtil {
         Map<InputReportType, ReportType> tempMap = new HashMap<>();
         tempMap.put(InputReportType.DAILY, ReportType.DAILY);
         tempMap.put(InputReportType.DAILY_BLOG, ReportType.DAILY);
-
         KEYWORD_TO_TYPE = Collections.unmodifiableMap(tempMap);
-
     }
 
     public static List<String> mapValueToString(List<InputReportType> inputString) {
