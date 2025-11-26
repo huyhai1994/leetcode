@@ -11,10 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class HTMLCrawlingExample {
 
     public static void main(String[] args) {
-        // Shared map to store results (thread-safe)
         ConcurrentHashMap<Integer, String> results = new ConcurrentHashMap<>();
 
-        // List to hold threads
         List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
@@ -42,8 +40,7 @@ public class HTMLCrawlingExample {
         final int threadId = i;
         return new Thread(() -> {
             try {
-                // Simulate crawling: Fetch HTML from a dummy URL (replace with real Google search API)
-                String urlString = "https://httpbin.org/html";  // Placeholder; use Google API for real searches
+                String urlString = "https://httpbin.org/html";
                 URL url = new URL(urlString);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
@@ -56,7 +53,7 @@ public class HTMLCrawlingExample {
                 }
                 reader.close();
 
-                results.put(threadId, "Thread " + threadId + " crawled: " + html.toString().substring(0, 100) + "...");
+                results.put(threadId, "Thread " + threadId + " crawled: " + html.substring(0, 100) + "...");
                 System.out.println("Thread " + threadId + " finished crawling.");
             } catch (Exception e) {
                 results.put(threadId, "Thread " + threadId + " error: " + e.getMessage());
