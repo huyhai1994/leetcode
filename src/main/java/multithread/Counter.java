@@ -9,4 +9,8 @@ public class Counter {
     public int getNextCounter() {
         return counter.getAndIncrement();
     }
+
+    public int getCurrentCounter() {
+        return counter.get();
+    }
 }
