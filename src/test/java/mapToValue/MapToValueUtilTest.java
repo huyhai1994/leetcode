@@ -3,6 +3,7 @@ package mapToValue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
@@ -12,15 +13,19 @@ class MapToValueUtilTest {
 
     @Test
     public void case0() {
-        List<InputReportType> inputString = List.of();
-        assertIterableEquals(List.of(), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        List<Object> expected = new ArrayList<>();
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("General Report + Business Style [as payload]")
     public void case1() {
-        List<InputReportType> inputString = List.of(InputReportType.DAILY);
-        assertIterableEquals(List.of("DAILY"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.DAILY);
+        List<String> expected = new ArrayList<>();
+        expected.add("DAILY");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
