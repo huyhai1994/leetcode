@@ -7,6 +7,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+abstract class Tree {
+    int value;
+    int depth;
+    Color color;
+
+    int getValue() {
+        return 0;
+    }
+
+    int getColor() {
+        return 0;
+    }
+
+    int getDepth() {
+        return 0;
+    }
+}
+
+class TreeLeaf extends Tree {
+}
+
+class TreeNode extends Tree {
+}
+
+enum Color {
+    RED,
+    BLACK
+}
+
 public class Solution {
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -31,9 +60,6 @@ public class Solution {
                 int v = Integer.parseInt(edgeParts[1]);
                 edges.add(new int[]{u, v});
             }
-            System.out.println(nodeValues);
-            System.out.println(nodeColors);
-            System.out.println(edges);
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
