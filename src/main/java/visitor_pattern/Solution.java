@@ -12,23 +12,35 @@ abstract class Tree {
     int depth;
     Color color;
 
-    int getValue() {
-        return 0;
+    public Tree(int value, int depth, Color color) {
+        this.value = value;
+        this.depth = depth;
+        this.color = color;
     }
 
-    int getColor() {
-        return 0;
+    int getValue() {
+        return value;
+    }
+
+    Color getColor() {
+        return color;
     }
 
     int getDepth() {
-        return 0;
+        return depth;
     }
 }
 
 class TreeLeaf extends Tree {
+    TreeLeaf(int value, int depth, Color color) {
+        super(value, depth, color);
+    }
 }
 
 class TreeNode extends Tree {
+    TreeNode(int value, int depth, Color color) {
+        super(value, depth, color);
+    }
 }
 
 enum Color {
@@ -41,7 +53,7 @@ public class Solution {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int numberOfNode;
         List<Integer> nodeValues = new ArrayList<>();
-        List<Integer> nodeColors = new ArrayList<>();
+        List<Color> nodeColors = new ArrayList<>();
         List<int[]> edges = new ArrayList<>();
         try {
             numberOfNode = Integer.parseInt(reader.readLine());
@@ -51,7 +63,9 @@ public class Solution {
 
             String lineColors = reader.readLine();
             List<String> colorParts = Arrays.asList(lineColors.split(" "));
-            colorParts.forEach(color -> nodeColors.add(Integer.parseInt(color)));
+            colorParts.forEach(color -> nodeColors.add(
+                    Integer.parseInt(color) == 1 ? Color.RED : Color.BLACK
+            ));
 
             for (int i = 0; i < numberOfNode - 1; i++) {
                 String edgeLine = reader.readLine();
