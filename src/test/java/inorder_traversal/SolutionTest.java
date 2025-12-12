@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import tree.TreeNode;
 import tree.inorder_traversal.Solution;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
@@ -20,7 +21,7 @@ class SolutionTest {
     @Test
     void emptyNode() {
         TreeNode root = new TreeNode();
-        List<Integer> expected = List.of();
+        List<Integer> expected = Arrays.asList();
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
@@ -50,7 +51,7 @@ class SolutionTest {
 
     @Test
     void nullRoot() {
-        List<Integer> expected = List.of();
+        List<Integer> expected = Arrays.asList();
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(null));
     }

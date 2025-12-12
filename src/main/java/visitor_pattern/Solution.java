@@ -5,16 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 abstract class Tree {
     int value;
-    int depth;
     Color color;
 
-    public Tree(int value, int depth, Color color) {
+    public Tree(int value, Color color) {
         this.value = value;
-        this.depth = depth;
         this.color = color;
     }
 
@@ -26,20 +25,17 @@ abstract class Tree {
         return color;
     }
 
-    int getDepth() {
-        return depth;
-    }
 }
 
 class TreeLeaf extends Tree {
-    TreeLeaf(int value, int depth, Color color) {
-        super(value, depth, color);
+    TreeLeaf(int value, Color color) {
+        super(value, color);
     }
 }
 
 class TreeNode extends Tree {
-    TreeNode(int value, int depth, Color color) {
-        super(value, depth, color);
+    TreeNode(int value, Color color) {
+        super(value, color);
     }
 }
 
@@ -50,6 +46,7 @@ enum Color {
 
 public class Solution {
     public static void main(String[] args) {
+        Solution sol = new Solution();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int numberOfNode;
         List<Integer> nodeValues = new ArrayList<>();
@@ -74,9 +71,16 @@ public class Solution {
                 int v = Integer.parseInt(edgeParts[1]);
                 edges.add(new int[]{u, v});
             }
+            for (int i = 0; i < nodeValues.size(); i++) {
+                List<Tree> tree = sol.buildTree(nodeValues.get(i), nodeColors.get(i), edges.get(i));
+            }
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public List<Tree> buildTree(Integer value, Color color, int[] path) {
+        return Collections.emptyList();
     }
 }

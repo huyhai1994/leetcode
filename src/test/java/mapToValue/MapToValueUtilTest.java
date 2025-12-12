@@ -32,7 +32,9 @@ class MapToValueUtilTest {
     @DisplayName("General Report + Business Style")
     public void case2() {
         List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.DAILY);
-        assertIterableEquals(List.of("DAILY"), MapToValueUtil.mapValueToString(inputString));
+        List<String> expected = new ArrayList<>();
+        expected.add("DAILY");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
