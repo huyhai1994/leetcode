@@ -60,13 +60,13 @@ enum Color {
 
 public class Solution {
     public static void main(String[] args) {
-        Solution sol = new Solution();
-        int numberOfNode;
-        List<Integer> nodeValues = new ArrayList<>();
-        List<Color> nodeColors = new ArrayList<>();
-        List<int[]> edges = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
+            Solution sol = new Solution();
+            int numberOfNode;
+            List<Integer> nodeValues = new ArrayList<>();
+            List<Color> nodeColors = new ArrayList<>();
             numberOfNode = Integer.parseInt(reader.readLine());
+            List<Integer>[] edges = new ArrayList[numberOfNode + 1]; // Index 1 to n
             String lineValues = reader.readLine();
             List<String> valueParts = Arrays.asList(lineValues.split(" "));
             valueParts.forEach(value -> nodeValues.add(Integer.parseInt(value)));
@@ -82,7 +82,8 @@ public class Solution {
                 String[] edgeParts = edgeLine.split(" ");
                 int u = Integer.parseInt(edgeParts[0]);
                 int v = Integer.parseInt(edgeParts[1]);
-                edges.add(new int[]{u, v});
+                edges[u].add(v);
+                edges[v].add(u);
             }
             List<Tree> tree = new ArrayList<>();
             try {
@@ -104,6 +105,12 @@ public class Solution {
         if (values.size() == 1) {
             TreeNode root = new TreeNode(values.get(0), colors.get(0));
             tree.add(root);
+            return tree;
+        } else if (values.size() == 2) {
+            TreeNode root = new TreeNode(values.get(0), colors.get(0));
+            tree.add(root);
+            TreeLeaf leaf = new TreeLeaf(values.get(1), colors.get(1));
+            tree.add(leaf);
             return tree;
         }
 
