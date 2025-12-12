@@ -17,8 +17,24 @@ class SolutionTest {
         List<Color> colors = Arrays.asList(Color.RED);
         List<int[]> paths = Arrays.asList(new int[]{1, 1});
         List<Tree> tree = Arrays.asList(new TreeNode(1, Color.RED));
-        assertEquals(tree.get(0), sol.buildTree(values.get(0), colors.get(0), paths.get(0)));
+        assertEquals(Arrays.asList(tree.get(0)), sol.buildTree(values, colors, paths));
     }
 
 
+    @Test
+    @DisplayName("two node tree, one root and one leaf")
+    void twoNodeTree() {
+        Solution sol = new Solution();
+        List<Integer> values = Arrays.asList(1, 2);
+        List<Color> colors = Arrays.asList(Color.RED, Color.BLACK);
+        List<int[]> paths = Arrays.asList(new int[]{1, 2});
+        List<Tree> buildTree = sol.buildTree(values, colors, paths);
+        List<Tree> treeExpected = Arrays.asList(
+                new TreeNode(1, Color.RED),
+                new TreeLeaf(2, Color.BLACK));
+        assertEquals(treeExpected.size(), buildTree.size());
+        for (int i = 0; i < treeExpected.size(); i++) {
+            assertEquals(treeExpected.get(i), buildTree.get(i));
+        }
+    }
 }

@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 abstract class Tree {
     int value;
@@ -23,6 +23,20 @@ abstract class Tree {
 
     Color getColor() {
         return color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TreeNode treeNode = (TreeNode) o;
+        return value == treeNode.value &&
+                color == treeNode.color;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, color);
     }
 
 }
@@ -47,12 +61,11 @@ enum Color {
 public class Solution {
     public static void main(String[] args) {
         Solution sol = new Solution();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int numberOfNode;
         List<Integer> nodeValues = new ArrayList<>();
         List<Color> nodeColors = new ArrayList<>();
         List<int[]> edges = new ArrayList<>();
-        try {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
             numberOfNode = Integer.parseInt(reader.readLine());
             String lineValues = reader.readLine();
             List<String> valueParts = Arrays.asList(lineValues.split(" "));
@@ -71,8 +84,11 @@ public class Solution {
                 int v = Integer.parseInt(edgeParts[1]);
                 edges.add(new int[]{u, v});
             }
-            for (int i = 0; i < nodeValues.size(); i++) {
-                List<Tree> tree = sol.buildTree(nodeValues.get(i), nodeColors.get(i), edges.get(i));
+            List<Tree> tree = new ArrayList<>();
+            try {
+                tree = sol.buildTree(nodeValues, nodeColors, edges);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
 
         } catch (IOException ex) {
@@ -80,7 +96,17 @@ public class Solution {
         }
     }
 
-    public List<Tree> buildTree(Integer value, Color color, int[] path) {
-        return Collections.emptyList();
+    public List<Tree> buildTree(List<Integer> values, List<Color> colors, List<int[]> paths) throws RuntimeException {
+        List<Tree> tree = new ArrayList<>();
+        if (values == null || colors == null || paths == null) {
+            throw new RuntimeException("input could not be null");
+        }
+        if (values.size() == 1) {
+            TreeNode root = new TreeNode(values.get(0), colors.get(0));
+            tree.add(root);
+            return tree;
+        }
+
+        return tree;
     }
 }
