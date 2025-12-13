@@ -29,7 +29,7 @@ abstract class Tree {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tree treeNode = (Tree) o;
+        TreeNode treeNode = (TreeNode) o;
         return value == treeNode.value &&
                 color == treeNode.color;
     }
