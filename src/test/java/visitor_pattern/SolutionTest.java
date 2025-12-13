@@ -3,7 +3,6 @@ package visitor_pattern;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -29,8 +28,7 @@ class SolutionTest {
         Solution sol = new Solution();
         List<Integer> values = Arrays.asList(1, 2);
         List<Color> colors = Arrays.asList(Color.RED, Color.BLACK);
-        List<Integer>[] paths = new ArrayList[1];
-        paths[0] = Arrays.asList(1, 2);
+        List<Integer>[] paths = new List[]{Arrays.asList(1, 2)};
         List<Tree> buildTree = sol.buildTree(values, colors, paths);
         List<Tree> treeExpected = Arrays.asList(
                 new TreeNode(1, Color.RED),
