@@ -27,12 +27,12 @@ class SolutionTest {
     void twoNodeTree() {
         Solution sol = new Solution();
         List<Integer> values = Arrays.asList(1, 2);
-        List<Color> colors = Arrays.asList(Color.RED, Color.BLACK);
+        List<Color> colors = Arrays.asList(Color.RED, Color.GREEN);
         List<Integer>[] paths = new List[]{Arrays.asList(1, 2)};
         List<Tree> buildTree = sol.buildTree(values, colors, paths);
         List<Tree> treeExpected = Arrays.asList(
                 new TreeNode(1, Color.RED, 0),
-                new TreeLeaf(2, Color.BLACK, 1));
+                new TreeLeaf(2, Color.GREEN, 1));
         assertEquals(treeExpected.size(), buildTree.size());
         for (int i = 0; i < treeExpected.size(); i++) {
             assertEquals(treeExpected.get(i), buildTree.get(i));

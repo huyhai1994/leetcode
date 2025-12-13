@@ -36,9 +36,7 @@ abstract class Tree {
         if (this == o) return true; // same reference address;
         if (o == null || this.getClass() != o.getClass()) return false;
         Tree treeNode = (Tree) o;
-        return value == treeNode.value &&
-                color == treeNode.color &&
-                depth == treeNode.depth;
+        return value == treeNode.value && color == treeNode.color && depth == treeNode.depth;
     }
 
     @Override
@@ -55,14 +53,23 @@ class TreeLeaf extends Tree {
 }
 
 class TreeNode extends Tree {
+    private ArrayList<Tree> children = new ArrayList<>();
+
     TreeNode(int value, Color color, int depth) {
         super(value, color, depth);
+    }
+
+    public void addChildren(Tree node) {
+        children.add(node);
+    }
+
+    public ArrayList<Tree> getChildren() {
+        return this.children;
     }
 }
 
 enum Color {
-    RED,
-    BLACK
+    RED, GREEN
 }
 
 public class Solution {
@@ -86,9 +93,7 @@ public class Solution {
 
             String lineColors = reader.readLine();
             List<String> colorParts = Arrays.asList(lineColors.split(" "));
-            colorParts.forEach(color -> nodeColors.add(
-                    Integer.parseInt(color) == 1 ? Color.RED : Color.BLACK
-            ));
+            colorParts.forEach(color -> nodeColors.add(Integer.parseInt(color) == 1 ? Color.RED : Color.GREEN));
 
             for (int i = 0; i < numberOfNode - 1; i++) {
                 String edgeLine = reader.readLine();
