@@ -59,15 +59,19 @@ enum Color {
 }
 
 public class Solution {
+    static List<Integer> nodeValues;
+    static List<Color> nodeColors;
+    static List<Integer>[] edges;
+
     public static void main(String[] args) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
             int numberOfNode;
             Solution sol = new Solution();
-            List<Integer> nodeValues = new ArrayList<>();
-            List<Color> nodeColors = new ArrayList<>();
+            nodeValues = new ArrayList<>();
+            nodeColors = new ArrayList<>();
 
             numberOfNode = Integer.parseInt(reader.readLine());
-            List<Integer>[] edges = new ArrayList[numberOfNode + 1]; // Index 1 to n
+            edges = new ArrayList[numberOfNode + 1];
 
             String lineValues = reader.readLine();
             List<String> valueParts = Arrays.asList(lineValues.split(" "));
