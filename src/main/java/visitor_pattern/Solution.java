@@ -28,8 +28,8 @@ abstract class Tree {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TreeNode treeNode = (TreeNode) o;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Tree treeNode = (Tree) o;
         return value == treeNode.value &&
                 color == treeNode.color;
     }
