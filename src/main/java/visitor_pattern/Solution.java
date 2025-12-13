@@ -11,10 +11,12 @@ import java.util.Objects;
 abstract class Tree {
     int value;
     Color color;
+    int depth;
 
-    public Tree(int value, Color color) {
+    public Tree(int value, Color color, int depth) {
         this.value = value;
         this.color = color;
+        this.depth = depth;
     }
 
     int getValue() {
@@ -25,13 +27,18 @@ abstract class Tree {
         return color;
     }
 
+    int getDepth() {
+        return depth;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) return true; // same reference address;
         if (o == null || this.getClass() != o.getClass()) return false;
         Tree treeNode = (Tree) o;
         return value == treeNode.value &&
-                color == treeNode.color;
+                color == treeNode.color &&
+                depth == treeNode.depth;
     }
 
     @Override
@@ -42,14 +49,14 @@ abstract class Tree {
 }
 
 class TreeLeaf extends Tree {
-    TreeLeaf(int value, Color color) {
-        super(value, color);
+    TreeLeaf(int value, Color color, int depth) {
+        super(value, color, depth);
     }
 }
 
 class TreeNode extends Tree {
-    TreeNode(int value, Color color) {
-        super(value, color);
+    TreeNode(int value, Color color, int depth) {
+        super(value, color, depth);
     }
 }
 
@@ -105,17 +112,19 @@ public class Solution {
 
     public List<Tree> buildTree(List<Integer> values, List<Color> colors, List<Integer>[] paths) throws RuntimeException {
         List<Tree> tree = new ArrayList<>();
+        boolean[] visited = new boolean[values.size()];
+
         if (values == null || colors == null || paths == null) {
             throw new RuntimeException("input could not be null");
         }
         if (values.size() == 1) {
-            TreeNode root = new TreeNode(values.get(0), colors.get(0));
+            TreeNode root = new TreeNode(values.get(0), colors.get(0), 0);
             tree.add(root);
             return tree;
         } else if (values.size() == 2) {
-            TreeNode root = new TreeNode(values.get(0), colors.get(0));
+            TreeNode root = new TreeNode(values.get(0), colors.get(0), 0);
             tree.add(root);
-            TreeLeaf leaf = new TreeLeaf(values.get(1), colors.get(1));
+            TreeLeaf leaf = new TreeLeaf(values.get(1), colors.get(1), 1);
             tree.add(leaf);
             return tree;
         }
