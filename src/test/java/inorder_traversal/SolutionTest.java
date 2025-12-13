@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import tree.TreeNode;
 import tree.inorder_traversal.Solution;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,8 @@ class SolutionTest {
     @Test
     void oneNode() {
         TreeNode root = new TreeNode(1);
-        List<Integer> expected = List.of(1);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(1);
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
@@ -31,7 +33,9 @@ class SolutionTest {
         TreeNode right = new TreeNode(2);
         TreeNode root = new TreeNode(1);
         root.setRight(right);
-        List<Integer> expected = List.of(1, 2);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(1);
+        expected.add(2);
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
@@ -44,7 +48,10 @@ class SolutionTest {
 
         root.setRight(right);
         root.setLeft(left);
-        List<Integer> expected = List.of(1, 2, 3);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(1);
+        expected.add(2);
+        expected.add(3);
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
@@ -61,7 +68,10 @@ class SolutionTest {
         TreeNode root = new TreeNode(3);
         root.setLeft(new TreeNode(2));
         root.getLeft().setLeft(new TreeNode(1));
-        List<Integer> expected = List.of(1, 2, 3);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(1);
+        expected.add(2);
+        expected.add(3);
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
@@ -71,7 +81,10 @@ class SolutionTest {
         TreeNode root = new TreeNode(1);
         root.setRight(new TreeNode(2));
         root.getRight().setRight(new TreeNode(3));
-        List<Integer> expected = List.of(1, 2, 3);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(1);
+        expected.add(2);
+        expected.add(3);
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
@@ -85,7 +98,14 @@ class SolutionTest {
         root.getLeft().setRight(new TreeNode(3));
         root.getRight().setLeft(new TreeNode(5));
         root.getRight().setRight(new TreeNode(7));
-        List<Integer> expected = List.of(1, 2, 3, 4, 5, 6, 7);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(1);
+        expected.add(2);
+        expected.add(3);
+        expected.add(4);
+        expected.add(5);
+        expected.add(6);
+        expected.add(7);
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }
@@ -95,7 +115,10 @@ class SolutionTest {
         TreeNode root = new TreeNode(2);
         root.setLeft(new TreeNode(2));
         root.setRight(new TreeNode(2));
-        List<Integer> expected = List.of(2, 2, 2);
+        List<Integer> expected = new ArrayList<>();
+        expected.add(2);
+        expected.add(2);
+        expected.add(2);
         Solution solution = new Solution();
         assertIterableEquals(expected, solution.inorderTraversal(root));
     }

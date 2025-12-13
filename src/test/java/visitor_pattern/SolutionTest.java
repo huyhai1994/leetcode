@@ -3,7 +3,9 @@ package visitor_pattern;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,11 +15,11 @@ class SolutionTest {
     @DisplayName("one node tree, only root node")
     void oneNodeTree() {
         Solution sol = new Solution();
-        List<Integer> values = Arrays.asList(1);
-        List<Color> colors = Arrays.asList(Color.RED);
-        List<int[]> paths = Arrays.asList(new int[]{1, 1});
-        List<Tree> tree = Arrays.asList(new TreeNode(1, Color.RED));
-        assertEquals(Arrays.asList(tree.get(0)), sol.buildTree(values, colors, paths));
+        List<Integer> values = Collections.singletonList(1);
+        List<Color> colors = Collections.singletonList(Color.RED);
+        List<Integer>[] paths = new List[]{Collections.emptyList()};
+        List<Tree> tree = Collections.singletonList(new TreeNode(1, Color.RED));
+        assertEquals(Collections.singletonList(tree.get(0)), sol.buildTree(values, colors, paths));
     }
 
 
@@ -27,7 +29,8 @@ class SolutionTest {
         Solution sol = new Solution();
         List<Integer> values = Arrays.asList(1, 2);
         List<Color> colors = Arrays.asList(Color.RED, Color.BLACK);
-        List<int[]> paths = Arrays.asList(new int[]{1, 2});
+        List<Integer>[] paths = new ArrayList[1];
+        paths[0] = Arrays.asList(1, 2);
         List<Tree> buildTree = sol.buildTree(values, colors, paths);
         List<Tree> treeExpected = Arrays.asList(
                 new TreeNode(1, Color.RED),

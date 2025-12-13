@@ -31,7 +31,9 @@ class MapToValueUtilTest {
     @Test
     @DisplayName("General Report + Business Style")
     public void case2() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.DAILY);
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.DAILY);
         List<String> expected = new ArrayList<>();
         expected.add("DAILY");
         assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
@@ -39,163 +41,243 @@ class MapToValueUtilTest {
 
     @Test
     public void case3() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.DAILY_BLOG);
-        assertIterableEquals(List.of("DAILY"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.DAILY_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add("DAILY");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Investment Report + Business Style [as payload]")
     public void case4_0() {
-        List<InputReportType> inputString = List.of(InputReportType.INVESTMENT);
-        assertIterableEquals(List.of("INVESTMENT"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.INVESTMENT);
+        List<String> expected = new ArrayList<>();
+        expected.add("INVESTMENT");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Investment Report + Business Style")
     public void case4_1() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.INVESTMENT);
-        assertIterableEquals(List.of("INVESTMENT"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.INVESTMENT);
+        List<String> expected = new ArrayList<>();
+        expected.add("INVESTMENT");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Investment Report + Essay Style")
     public void case5() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.INVESTMENT_BLOG);
-        assertIterableEquals(List.of("INVESTMENT"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.INVESTMENT_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add("INVESTMENT");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Review Report + Business Style [as payload]")
     public void case6_0() {
-        List<InputReportType> inputString = List.of(InputReportType.PRODUCT_REVIEW);
-        assertIterableEquals(List.of("PRODUCT_REVIEW"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.PRODUCT_REVIEW);
+        List<String> expected = new ArrayList<>();
+        expected.add("PRODUCT_REVIEW");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Review Report + Business Style")
     public void case6_1() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.PRODUCT_REVIEW);
-        assertIterableEquals(List.of("PRODUCT_REVIEW"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.PRODUCT_REVIEW);
+        List<String> expected = new ArrayList<>();
+        expected.add("PRODUCT_REVIEW");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Review Report + Essay Style")
     public void case7() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.PRODUCT_REVIEW_BLOG);
-        assertIterableEquals(List.of("PRODUCT_REVIEW"), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.PRODUCT_REVIEW_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add("PRODUCT_REVIEW");
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Indepth Report + Business Style")
     public void case8() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.INDEPTH);
-        assertIterableEquals(List.of(ReportType.INDEPTH.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.INDEPTH);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.INDEPTH.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Indepth Report + Business Style")
     public void case9() {
-        List<InputReportType> inputString = List.of(InputReportType.INDEPTH);
-        assertIterableEquals(List.of(ReportType.INDEPTH.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.INDEPTH);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.INDEPTH.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Indepth Report + Essay Style")
     public void case10() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.INDEPTH_BLOG);
-        assertIterableEquals(List.of(ReportType.INDEPTH.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.INDEPTH_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.INDEPTH.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Journalist Note + Business Style [as payload]")
     public void case11() {
-        List<InputReportType> inputString = List.of(InputReportType.JOURNAL_NOTE_BLOG);
-        assertIterableEquals(List.of(ReportType.JOURNAL_NOTE.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.JOURNAL_NOTE_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.JOURNAL_NOTE.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Journalist Note + Business Style")
     public void case12() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.JOURNAL_NOTE_BLOG);
-        assertIterableEquals(List.of(ReportType.JOURNAL_NOTE.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.JOURNAL_NOTE_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.JOURNAL_NOTE.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Journalist Note + Essay Style")
     public void case13() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.JOURNAL_NOTE);
-        assertIterableEquals(List.of(ReportType.JOURNAL_NOTE.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.JOURNAL_NOTE);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.JOURNAL_NOTE.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + Blog Style [as payload]")
     public void case14() {
-        List<InputReportType> inputString = List.of(InputReportType.SOCIAL_MEDIA_BLOG);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.SOCIAL_MEDIA_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + Blog Style")
     public void case15() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.SOCIAL_MEDIA_BLOG);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.SOCIAL_MEDIA_BLOG);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + Facebook Style [as payload]")
     public void case16() {
-        List<InputReportType> inputString = List.of(InputReportType.SOCIAL_MEDIA_FACEBOOK);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.SOCIAL_MEDIA_FACEBOOK);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + Facebook Style")
     public void case17() {
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.SOCIAL_MEDIA_FACEBOOK);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.SOCIAL_MEDIA_FACEBOOK);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + X Style [as payload]")
     public void case18() {
         // return result fast
-        List<InputReportType> inputString = List.of(InputReportType.SOCIAL_MEDIA_X);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.SOCIAL_MEDIA_X);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + X Style")
     public void case19() {
         // return result fast
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.SOCIAL_MEDIA_X);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.SOCIAL_MEDIA_X);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + Youtube Style [as payload]")
     public void case20() {
         // return result fast
-        List<InputReportType> inputString = List.of(InputReportType.SOCIAL_MEDIA_YOUTUBE);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.SOCIAL_MEDIA_YOUTUBE);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Social Media Posting + Youtube Style")
     public void case21() {
         // return result fast
-        List<InputReportType> inputString = List.of(InputReportType.REPORT, InputReportType.SOCIAL_MEDIA_YOUTUBE);
-        assertIterableEquals(List.of(ReportType.SOCIAL_MEDIA.name()), MapToValueUtil.mapValueToString(inputString));
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.REPORT);
+        inputString.add(InputReportType.SOCIAL_MEDIA_YOUTUBE);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        assertIterableEquals(expected, MapToValueUtil.mapValueToString(inputString));
     }
 
     @Test
     @DisplayName("Report + Social media + Journal note")
     public void case22() {
-        List<InputReportType> inputString = List.of(
-                InputReportType.DAILY,
-                InputReportType.SOCIAL_MEDIA_YOUTUBE, InputReportType.JOURNAL_NOTE
-        );
+        List<InputReportType> inputString = new ArrayList<>();
+        inputString.add(InputReportType.DAILY);
+        inputString.add(InputReportType.SOCIAL_MEDIA_YOUTUBE);
+        inputString.add(InputReportType.JOURNAL_NOTE);
+        List<String> expected = new ArrayList<>();
+        expected.add(ReportType.DAILY.name());
+        expected.add(ReportType.SOCIAL_MEDIA.name());
+        expected.add(ReportType.JOURNAL_NOTE.name());
         assertIterableEquals(
-                List.of(ReportType.DAILY.name(), ReportType.SOCIAL_MEDIA.name(), ReportType.JOURNAL_NOTE.name()),
+                expected,
                 MapToValueUtil.mapValueToString(inputString));
     }
 }

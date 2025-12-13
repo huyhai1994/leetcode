@@ -61,12 +61,14 @@ enum Color {
 public class Solution {
     public static void main(String[] args) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
-            Solution sol = new Solution();
             int numberOfNode;
+            Solution sol = new Solution();
             List<Integer> nodeValues = new ArrayList<>();
             List<Color> nodeColors = new ArrayList<>();
+
             numberOfNode = Integer.parseInt(reader.readLine());
             List<Integer>[] edges = new ArrayList[numberOfNode + 1]; // Index 1 to n
+
             String lineValues = reader.readLine();
             List<String> valueParts = Arrays.asList(lineValues.split(" "));
             valueParts.forEach(value -> nodeValues.add(Integer.parseInt(value)));
@@ -97,7 +99,7 @@ public class Solution {
         }
     }
 
-    public List<Tree> buildTree(List<Integer> values, List<Color> colors, List<int[]> paths) throws RuntimeException {
+    public List<Tree> buildTree(List<Integer> values, List<Color> colors, List<Integer>[] paths) throws RuntimeException {
         List<Tree> tree = new ArrayList<>();
         if (values == null || colors == null || paths == null) {
             throw new RuntimeException("input could not be null");
