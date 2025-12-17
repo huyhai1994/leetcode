@@ -122,11 +122,11 @@ public class Solution {
         }
     }
 
-    public Tree buildTree(int root) {
+    public Tree buildTree(int rootIndex) {
         if (this.nodeValues.size() == 1) {
             return new TreeLeaf(this.nodeValues.get(0), this.nodeColors.get(0), 0);
         }
-        return dfs(root, 0);
+        return dfs(rootIndex, 0);
     }
 
     private Tree dfs(int node, int depth) {

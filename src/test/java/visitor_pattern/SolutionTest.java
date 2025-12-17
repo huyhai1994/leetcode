@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 class SolutionTest {
     @Test
-    @DisplayName("one node tree, only root node")
-    void oneNodeTree() throws Exception {
+    @DisplayName("one node tree, only root node/ tree leaf")
+    void oneNodeTree() {
         List<Integer> values = Collections.singletonList(1);
         List<Color> colors = Collections.singletonList(Color.RED);
         List<Integer>[] paths = new List[]{Collections.emptyList()};
