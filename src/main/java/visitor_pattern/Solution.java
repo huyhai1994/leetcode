@@ -73,19 +73,24 @@ enum Color {
 }
 
 public class Solution {
-    static List<Integer> nodeValues;
-    static List<Color> nodeColors;
-    static List<Integer>[] edges;
+    boolean[] visited;
+    private final List<Integer> nodeValues;
+    private final List<Color> nodeColors;
+    private final List<Integer>[] edges;
+
+
+    public Solution(List<Integer> nodeValues, List<Color> nodeColors, List<Integer>[] edges) {
+        this.nodeValues = nodeValues;
+        this.nodeColors = nodeColors;
+        this.edges = edges;
+    }
 
     public static void main(String[] args) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
-            int numberOfNode;
-            Solution sol = new Solution();
-            nodeValues = new ArrayList<>();
-            nodeColors = new ArrayList<>();
-
-            numberOfNode = Integer.parseInt(reader.readLine());
-            edges = new ArrayList[numberOfNode + 1];
+            int numberOfNode = Integer.parseInt(reader.readLine());
+            List<Integer> nodeValues = new ArrayList<>();
+            List<Color> nodeColors = new ArrayList<>();
+            List<Integer>[] edges = new ArrayList[numberOfNode + 1];
 
             String lineValues = reader.readLine();
             List<String> valueParts = Arrays.asList(lineValues.split(" "));
@@ -93,7 +98,10 @@ public class Solution {
 
             String lineColors = reader.readLine();
             List<String> colorParts = Arrays.asList(lineColors.split(" "));
-            colorParts.forEach(color -> nodeColors.add(Integer.parseInt(color) == 1 ? Color.RED : Color.GREEN));
+            colorParts.forEach(color -> nodeColors.add(Integer.parseInt(color) == 0 ? Color.RED : Color.GREEN));
+            for (int i = 1; i <= numberOfNode; i++) {
+                edges[i] = new ArrayList<>();
+            }
 
             for (int i = 0; i < numberOfNode - 1; i++) {
                 String edgeLine = reader.readLine();
@@ -103,9 +111,11 @@ public class Solution {
                 edges[u].add(v);
                 edges[v].add(u);
             }
-            List<Tree> tree = new ArrayList<>();
+            Solution sol = new Solution(nodeValues, nodeColors, edges);
+            sol.visited = new boolean[numberOfNode + 1];
+            Tree tree;
             try {
-                tree = sol.buildTree(nodeValues, nodeColors, edges);
+                tree = sol.buildTree(1, numberOfNode);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
@@ -115,25 +125,32 @@ public class Solution {
         }
     }
 
-    public List<Tree> buildTree(List<Integer> values, List<Color> colors, List<Integer>[] paths) throws RuntimeException {
-        List<Tree> tree = new ArrayList<>();
-        boolean[] visited = new boolean[values.size()];
-
-        if (values == null || colors == null || paths == null) {
-            throw new RuntimeException("input could not be null");
+    public Tree buildTree(int root, int numberOfNode) {
+        if (numberOfNode == 1) {
+            return new TreeLeaf(this.nodeValues.get(0), this.nodeColors.get(0), 0);
         }
-        if (values.size() == 1) {
-            TreeNode root = new TreeNode(values.get(0), colors.get(0), 0);
-            tree.add(root);
-            return tree;
-        } else if (values.size() == 2) {
-            TreeNode root = new TreeNode(values.get(0), colors.get(0), 0);
-            tree.add(root);
-            TreeLeaf leaf = new TreeLeaf(values.get(1), colors.get(1), 1);
-            tree.add(leaf);
-            return tree;
+        return dfs(root, 0);
+    }
+
+    private Tree dfs(int node, int depth) {
+
+        this.visited[node] = true;
+        boolean isLeaf = true;
+        for (int child : this.edges[node]) {
+            if (!this.visited[child]) {
+                isLeaf = false;
+            }
         }
 
-        return tree;
+        if (isLeaf)
+            return new TreeLeaf(this.nodeValues.get(node - 1), this.nodeColors.get(node - 1), depth);
+        TreeNode tnode = new TreeNode(nodeValues.get(node - 1), this.nodeColors.get(node - 1), depth);
+
+        for (int child : this.edges[node]) {
+            if (!visited[child]) {
+                tnode.addChildren(dfs(child, depth + 1));
+            }
+        }
+        return tnode;
     }
 }
