@@ -7,20 +7,20 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 class SolutionTest {
     @Test
     @DisplayName("one node tree, only root node")
-    void oneNodeTree() {
+    void oneNodeTree() throws Exception {
         List<Integer> values = Collections.singletonList(1);
         List<Color> colors = Collections.singletonList(Color.RED);
         List<Integer>[] paths = new List[]{Collections.emptyList()};
         Solution sol = new Solution(values, colors, paths);
         Tree tree = new TreeLeaf(1, Color.RED, 0);
-        Tree result = sol.buildTree(1, 1);
+        Tree result = sol.buildTree(1);
         assertEquals(tree, result);
-        assertTrue(result instanceof TreeLeaf);
+        assertInstanceOf(TreeLeaf.class, result);
         assertEquals(tree.getValue(), result.getValue());
         assertEquals(tree.getColor(), result.getColor());
         assertEquals(tree.getDepth(), result.getDepth());

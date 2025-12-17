@@ -63,9 +63,6 @@ class TreeNode extends Tree {
         children.add(node);
     }
 
-    public ArrayList<Tree> getChildren() {
-        return this.children;
-    }
 }
 
 enum Color {
@@ -73,7 +70,7 @@ enum Color {
 }
 
 public class Solution {
-    boolean[] visited;
+    private final boolean[] visited;
     private final List<Integer> nodeValues;
     private final List<Color> nodeColors;
     private final List<Integer>[] edges;
@@ -83,6 +80,7 @@ public class Solution {
         this.nodeValues = nodeValues;
         this.nodeColors = nodeColors;
         this.edges = edges;
+        this.visited = new boolean[nodeValues.size() + 1];
     }
 
     public static void main(String[] args) {
@@ -112,10 +110,9 @@ public class Solution {
                 edges[v].add(u);
             }
             Solution sol = new Solution(nodeValues, nodeColors, edges);
-            sol.visited = new boolean[numberOfNode + 1];
             Tree tree;
             try {
-                tree = sol.buildTree(1, numberOfNode);
+                tree = sol.buildTree(1);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
@@ -125,15 +122,14 @@ public class Solution {
         }
     }
 
-    public Tree buildTree(int root, int numberOfNode) {
-        if (numberOfNode == 1) {
+    public Tree buildTree(int root) {
+        if (this.nodeValues.size() == 1) {
             return new TreeLeaf(this.nodeValues.get(0), this.nodeColors.get(0), 0);
         }
         return dfs(root, 0);
     }
 
     private Tree dfs(int node, int depth) {
-
         this.visited[node] = true;
         boolean isLeaf = true;
         for (int child : this.edges[node]) {
