@@ -1,15 +1,30 @@
 package number_to_binary;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
+    Solution sol;
+
+    @BeforeEach
+    void setUp() {
+        sol = new Solution();
+    }
+
     @Test
     void inputAs1Case() {
-        Solution sol = new Solution();
         int number = 1;
         String expectedResult = "1";
+        assertEquals(expectedResult, sol.numberToBinary(number));
+    }
+
+    @Test
+    void inputAs2Case() {
+        int number = 2;
+        String expectedResult = "10";
         assertEquals(expectedResult, sol.numberToBinary(number));
     }
 }
