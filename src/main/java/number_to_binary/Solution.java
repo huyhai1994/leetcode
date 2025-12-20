@@ -10,8 +10,8 @@ public class Solution {
 
     public String numberToBinary(int number) {
         if (number == 1) return "1";
-        return "";
+        int divider = number % 2;
+        number = number / 2;
+        return number + String.valueOf(divider);
     }
-
-
 }
