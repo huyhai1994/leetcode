@@ -27,4 +27,11 @@ class SolutionTest {
         String expectedResult = "10";
         assertEquals(expectedResult, sol.numberToBinary(number));
     }
+
+    @Test
+    void inputAs3Case() {
+        int number = 3;
+        String expectedResult = "11";
+        assertEquals(expectedResult, sol.numberToBinary(number));
+    }
 }
