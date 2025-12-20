@@ -8,7 +8,7 @@ public class Solution {
     }
 
 
-    public String numberToBinary(int number) {
+    public static String numberToBinary(int number) {
         if (number == 0) return "0"; // Handle 0
         StringBuilder sb = new StringBuilder();
         while (number > 0) {
