@@ -9,12 +9,13 @@ public class Solution {
 
 
     public String numberToBinary(int number) {
-        if (number == 1) return "1";
+        if (number == 0) return "0"; // Handle 0
         StringBuilder sb = new StringBuilder();
-        int divider = number % 2;
-        number = number / 2;
-        sb.append(number);
-        sb.append(divider);
+        while (number > 0) {
+            int remainder = number % 2;
+            number = number / 2;
+            sb.insert(0, remainder);
+        }
         return sb.toString();
     }
 }
