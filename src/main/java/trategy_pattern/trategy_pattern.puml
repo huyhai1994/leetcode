@@ -1,0 +1,38 @@
+@startuml
+
+interface FileReaderStrategy {
+    + read(path: String): String
+}
+
+class FileReaderContext {
+    - strategy: FileReaderStrategy
+    + setStrategy(strategy: FileReaderStrategy)
+    + readFile(path: String): String
+}
+
+class TextFileReader {
+    + read(path: String): String
+}
+
+class JsonFileReader {
+    + read(path: String): String
+}
+
+class CsvFileReader {
+    + read(path: String): String
+}
+
+class FileReaderFactory {
+    + getReader(type: String): FileReaderStrategy
+}
+
+FileReaderContext --> FileReaderStrategy : uses
+FileReaderContext --> FileReaderFactory : requests
+
+TextFileReader ..|> FileReaderStrategy
+JsonFileReader ..|> FileReaderStrategy
+CsvFileReader ..|> FileReaderStrategy
+
+FileReaderFactory --> FileReaderStrategy : creates
+
+@enduml
