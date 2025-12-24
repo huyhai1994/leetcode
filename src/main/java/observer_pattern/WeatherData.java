@@ -1,24 +1,32 @@
 package observer_pattern;
 
 public class WeatherData {
+    CurrentConditionsDisplay currentConditionDisplay;
+    StatisticsDisplay statisticDisplay;
+    ForecastDisplay forecastDisplay;
 
-    public void getTemperature() {
+    public float getTemperature() {
+        return 0F;
     }
 
-    public void getHumidity() {
-
+    public float getHumidity() {
+        return 0F;
     }
 
-    public void getPressure() {
-
+    public float getPressure() {
+        return 0F;
     }
 
     public void measurementsChanged() {
-        /*
-         * This method gets called whenever
-         * the weather measurements have been updated
-         *
-         */
+        float temp = getTemperature();
+        float humidity = getHumidity();
+        float pressure = getPressure();
+
+        currentConditionDisplay.update(temp, humidity, pressure);
+        statisticDisplay.update(temp, humidity, pressure);
+        forecastDisplay.update(temp, humidity, pressure);
 
     }
+
+    // other WeatherData methods here
 }
