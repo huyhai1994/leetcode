@@ -1,32 +1,43 @@
 package observer_pattern;
 
-public class WeatherData {
-    CurrentConditionsDisplay currentConditionDisplay;
-    StatisticsDisplay statisticDisplay;
-    ForecastDisplay forecastDisplay;
+import java.util.ArrayList;
+import java.util.List;
 
-    public float getTemperature() {
-        return 0F;
+public class WeatherData implements Subject {
+    private List<Observer> observers;
+    private float temperature;
+    private float humidity;
+    private float pressure;
+
+    public WeatherData() {
+        observers = new ArrayList<>();
     }
 
-    public float getHumidity() {
-        return 0F;
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
     }
 
-    public float getPressure() {
-        return 0F;
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(temperature, humidity, pressure);
+        }
     }
 
     public void measurementsChanged() {
-        float temp = getTemperature();
-        float humidity = getHumidity();
-        float pressure = getPressure();
-
-        currentConditionDisplay.update(temp, humidity, pressure);
-        statisticDisplay.update(temp, humidity, pressure);
-        forecastDisplay.update(temp, humidity, pressure);
-
+        notifyObservers();
     }
 
-    // other WeatherData methods here
+    public void setMeasurements(float temperature, float humidify, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidify;
+        this.pressure = pressure;
+        measurementsChanged();
+    }
 }
