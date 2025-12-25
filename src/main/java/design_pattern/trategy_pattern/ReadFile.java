@@ -1,4 +1,4 @@
-package trategy_pattern;
+package design_pattern.trategy_pattern;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,5 +1,6 @@
 package visitor_pattern;
 
+import design_pattern.visitor_pattern.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

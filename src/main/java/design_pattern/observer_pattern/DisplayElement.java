@@ -1,4 +1,4 @@
-package observer_pattern;
+package design_pattern.observer_pattern;
 
 public interface DisplayElement {
     void display();

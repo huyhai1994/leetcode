@@ -1,4 +1,4 @@
-package visitor_pattern;
+package design_pattern.visitor_pattern;
 
 import java.io.BufferedReader;
 import java.io.IOException;

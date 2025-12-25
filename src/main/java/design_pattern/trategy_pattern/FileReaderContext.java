@@ -1,4 +1,4 @@
-package trategy_pattern;
+package design_pattern.trategy_pattern;
 
 public class FileReaderContext {
     private FileReaderStrategy strategy;
