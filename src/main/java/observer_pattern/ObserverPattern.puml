@@ -1,0 +1,35 @@
+@startuml
+
+interface Subject
+interface Observer
+
+class ConcreteSubject
+class ConcreteObserver
+Subject <|-- ConcreteSubject
+Observer <|-- ConcreteObserver
+
+interface Subject{
+    +registerObserver()
+    +removeObserver()
+    +modifyObserver()
+}
+
+interface Observer{
+    +update()
+}
+
+class ConcreteSubject{
+    +registerObserver()
+    +removeObserver()
+    +modifyObserver()
+}
+
+class ConcreteObserver{
+    +update()
+}
+
+Subject "1" o-- "*" Observer: observers
+
+
+
+@enduml
