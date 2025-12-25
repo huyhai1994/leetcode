@@ -1,35 +1,29 @@
 @startuml
 
-interface Subject
-interface Observer
+interface Subject {
+    +registerObserver(o: Observer)
+    +removeObserver(o: Observer)
+    +notifyObservers()
+}
 
-class ConcreteSubject
-class ConcreteObserver
+interface Observer {
+    +update()
+}
+
+class ConcreteSubject {
+    +registerObserver(o: Observer)
+    +removeObserver(o: Observer)
+    +notifyObservers()
+}
+
+class ConcreteObserver {
+    +update()
+}
+
 Subject <|-- ConcreteSubject
 Observer <|-- ConcreteObserver
 
-interface Subject{
-    +registerObserver()
-    +removeObserver()
-    +modifyObserver()
-}
-
-interface Observer{
-    +update()
-}
-
-class ConcreteSubject{
-    +registerObserver()
-    +removeObserver()
-    +modifyObserver()
-}
-
-class ConcreteObserver{
-    +update()
-}
-
-Subject "1" o-- "*" Observer: observers
-
-
+ConcreteSubject "1" o-- "*" Observer : observers
+ConcreteObserver --> ConcreteSubject : subject
 
 @enduml

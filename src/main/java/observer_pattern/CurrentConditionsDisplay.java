@@ -3,9 +3,9 @@ package observer_pattern;
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
     private float temperature;
     private float humidity;
-    private WeatherData weatherData;
+    private Subject weatherData;
 
-    public CurrentConditionsDisplay(WeatherData weatherData) {
+    public CurrentConditionsDisplay(Subject weatherData) {
         this.weatherData = weatherData;
         weatherData.registerObserver(this);
     }
