@@ -8,67 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-abstract class Tree {
-    int value;
-    Color color;
-    int depth;
-
-    public Tree(int value, Color color, int depth) {
-        this.value = value;
-        this.color = color;
-        this.depth = depth;
-    }
-
-    int getValue() {
-        return value;
-    }
-
-    Color getColor() {
-        return color;
-    }
-
-    int getDepth() {
-        return depth;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true; // same reference address;
-        if (o == null || this.getClass() != o.getClass()) return false;
-        Tree treeNode = (Tree) o;
-        return value == treeNode.value && color == treeNode.color && depth == treeNode.depth;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value, color);
-    }
-
-}
-
-class TreeLeaf extends Tree {
-    TreeLeaf(int value, Color color, int depth) {
-        super(value, color, depth);
-    }
-}
-
-class TreeNode extends Tree {
-    private ArrayList<Tree> children = new ArrayList<>();
-
-    TreeNode(int value, Color color, int depth) {
-        super(value, color, depth);
-    }
-
-    public void addChildren(Tree node) {
-        children.add(node);
-    }
-
-}
-
-enum Color {
-    RED, GREEN
-}
-
 public class Solution {
     private final boolean[] visited;
     private final List<Integer> nodeValues;
