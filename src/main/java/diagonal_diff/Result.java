@@ -6,10 +6,17 @@ public class Result {
 
 
     public static int diagonalDifference(List<List<Integer>> arr) {
-//        for (int i = 0; i < ; i++) {
-//
-//        }
-//        int firstDiagonal = arr.get(e)
-        return 0;
+        int firstDiagonal = 0;
+        int secondDiagonal = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            for (int j = 0; j < arr.size(); j++) {
+                if (i == j) {
+                    firstDiagonal = firstDiagonal + arr.get(i).get(j);
+                } else if (i + j == arr.size() - 1) {
+                    secondDiagonal = secondDiagonal + arr.get(i).get(j);
+                }
+            }
+        }
+        return Math.abs(firstDiagonal - secondDiagonal);
     }
 }
