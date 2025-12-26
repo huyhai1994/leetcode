@@ -11,12 +11,12 @@ public class Result {
         for (int i = 0; i < arr.size(); i++) {
             for (int j = 0; j < arr.size(); j++) {
                 if (i == j) {
-                    firstDiagonal = firstDiagonal + arr.get(i).get(j);
-                } else if (i + j == arr.size() - 1) {
-                    secondDiagonal = secondDiagonal + arr.get(i).get(j);
+                    firstDiagonal += arr.get(i).get(j);
+                }
+                if (i + j == arr.size() - 1) {
+                    secondDiagonal += arr.get(i).get(j);
                 }
             }
         }
         return Math.abs(firstDiagonal - secondDiagonal);
-    }
-}
+    }}
