@@ -1,6 +1,5 @@
 package multithread;
 
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class MySleepingThread extends Thread {
@@ -16,7 +15,7 @@ public class MySleepingThread extends Thread {
         while (i < 3) {
             try {
                 System.out.println(currentThread().getName() + "running...." + i++);
-                TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(6, 15));
+                TimeUnit.SECONDS.sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
