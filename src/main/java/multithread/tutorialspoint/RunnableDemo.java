@@ -17,7 +17,7 @@ public class RunnableDemo implements Runnable {
         for (int i = 4; i > 0; i--) {
             System.out.println("Thread: " + threadName + ", " + i);
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 System.out.println("Thread " + threadName + " exiting.");
             }
@@ -25,15 +25,16 @@ public class RunnableDemo implements Runnable {
         }
     }
 
-    public void start() {
+    public void start() throws InterruptedException {
         System.out.println("Starting " + threadName);
         if (t == null) {
             t = new Thread(this, threadName);
             t.start();
+            t.join(1000); // block current thread util another thread terminates
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         RunnableDemo R1 = new RunnableDemo("Thread-1");
         R1.start();
         RunnableDemo R2 = new RunnableDemo("Thread-2");
