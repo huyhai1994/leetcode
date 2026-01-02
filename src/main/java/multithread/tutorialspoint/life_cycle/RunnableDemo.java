@@ -1,4 +1,4 @@
-package multithread.tutorialspoint;
+package multithread.tutorialspoint.life_cycle;
 
 import java.util.concurrent.TimeUnit;
 
