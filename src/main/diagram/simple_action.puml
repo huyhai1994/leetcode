@@ -1,0 +1,10 @@
+@startuml
+
+start
+
+:first action start;
+:second action;
+
+end
+
+@enduml
