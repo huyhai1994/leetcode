@@ -1,0 +1,30 @@
+@startuml
+title CountDownLatch - Activity Diagram
+
+start
+
+:Main Thread starts;
+
+fork
+  partition "Main Thread" {
+    :Create CountDownLatch(count=1);
+    :Submit worker task;
+    :Print "back in main";
+    :Call countDown();
+    :Shutdown executor;
+  }
+
+  partition "Worker Thread" {
+    :Worker starts;
+    :Call await();
+    note right
+      Blocked until
+      latch count == 0
+    end note
+    :Unblocked;
+    :Print "top o' the stack";
+  }
+end fork
+
+stop
+@enduml
