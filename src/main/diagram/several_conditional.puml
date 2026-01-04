@@ -1,0 +1,16 @@
+@startuml
+   start
+       if(condition A) then (yes)
+            :text1;
+       elseif (condition B) then (yes)
+            :text2;
+       elseif (condition C) then (yes)
+            :text3;
+       elseif (condition D) then (yes)
+            :text4;
+        else (nothing)
+            :text else;
+        endif
+   end
+
+@enduml
