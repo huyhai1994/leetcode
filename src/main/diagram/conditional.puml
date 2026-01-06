@@ -1,0 +1,12 @@
+@startuml
+
+start
+    if(Graphviz installed?) then (yes)
+        :process all;
+    else (no)
+        :process only;
+    endif
+end
+
+
+@enduml
