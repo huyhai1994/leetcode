@@ -13,6 +13,7 @@ public class BreakingScore {
 
         scores.parallelStream().skip(1).forEach(score -> {
             int currentHigh = high.get();
+            int currentLow = low.get();
             if (score > currentHigh) {
                 while (!high.compareAndSet(currentHigh, score)) {
                     currentHigh = high.get();
@@ -21,7 +22,6 @@ public class BreakingScore {
                 if (score > currentHigh) breaksHigh.incrementAndGet();
             }
             // Same pattern for low
-            int currentLow = low.get();
             if (score < currentLow) {
                 while (!low.compareAndSet(currentLow, score)) {
                     currentLow = low.get();
