@@ -26,10 +26,10 @@ public class Result {
 
         Optional<Integer> key =
                 birds.entrySet()
-                .parallelStream()
-                .filter(entry -> entry.getValue().equals(maxValue))
-                .map(Map.Entry::getKey)
-                .findFirst();
+                        .parallelStream()
+                        .filter(entry -> entry.getValue().equals(maxValue))
+                        .map(Map.Entry::getKey)
+                        .findFirst();
 
 
         return key.orElse(0);
