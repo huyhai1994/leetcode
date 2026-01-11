@@ -1,37 +1,31 @@
 package migratory_bird;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Result {
     public static int migratoryBirds(List<Integer> arr) {
-        Map<Integer, Integer> birds = new TreeMap<>();
-        arr.forEach(bird -> {
-            if (!birds.containsKey(bird)) {
-                birds.put(bird, 1);
-            } else {
-                birds.computeIfPresent(bird, (k, v) -> v + 1);
-            }
-        });
-
-        int highestFrequencyBird = Integer.MIN_VALUE;
-        for (Map.Entry<Integer, Integer> entry : birds.entrySet()) {
-            int value = entry.getValue();
-            highestFrequencyBird = Math.max(highestFrequencyBird, value);
+        Map<Integer, Integer> birds =
+                arr.stream()
+                .collect(
+                        Collectors.toMap(
+                                bird -> bird,
+                                bird -> 1,
+                                Integer::sum,
+                                LinkedHashMap::new
+                        )
+                );
+        int maxValue = Integer.MIN_VALUE;
+        for (Map.Entry<Integer, Integer> bird : birds.entrySet()) {
+            int frequency = bird.getValue();
+            maxValue = Math.max(maxValue, frequency);
         }
-
-        final int maxValue = highestFrequencyBird;
-
-        Optional<Integer> key =
-                birds.entrySet()
-                        .parallelStream()
-                        .filter(entry -> entry.getValue().equals(maxValue))
-                        .map(Map.Entry::getKey)
-                        .findFirst();
-
-
-        return key.orElse(0);
+        final int maxFrequencies = maxValue;
+        Optional<Integer> bird = birds.entrySet()
+                .stream()
+                .filter(item -> item.getValue().equals(maxFrequencies))
+                .map(Map.Entry::getKey)
+                .findFirst();
+        return bird.orElse(0);
     }
 }
