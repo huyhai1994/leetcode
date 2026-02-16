@@ -1,0 +1,40 @@
+@startuml
+title CountDownLatch Example - Activity Diagram
+
+|Main Thread|
+start
+:Create CountDownLatch(2);
+
+fork
+    :Create Thread 1;
+    :Start Thread 1;
+fork again
+    :Create Thread 2;
+    :Start Thread 2;
+end fork
+
+:Call latch.await(1 second);
+
+if (All tasks finished?) then (Yes)
+    :Print "All task finished!!!";
+else (No)
+    :Print "Not all task finished!!!";
+endif
+
+stop
+
+|Worker Thread 1|
+start
+:Sleep 10 seconds;
+:Print "Task done!";
+:latch.countDown();
+stop
+
+|Worker Thread 2|
+start
+:Sleep 10 seconds;
+:Print "Task done!";
+:latch.countDown();
+stop
+
+@enduml
