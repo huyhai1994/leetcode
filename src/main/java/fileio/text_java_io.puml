@@ -35,4 +35,13 @@ note right of Object
   Character-based streams
 end note
 
+note right of FileWriter
+    low level writer
+    ,writes characters to file
+end note
+
+note right of FileReader
+    low level reader,
+    ,read characters from file
+end note
 @enduml
