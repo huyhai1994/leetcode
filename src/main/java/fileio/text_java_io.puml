@@ -1,0 +1,38 @@
+@startuml
+
+' Define classes with colors
+class Object
+
+' Reader hierarchy (blue)
+class Reader #lightblue
+class InputStreamReader #lightblue
+class FileReader #lightblue
+class BufferedReader #lightblue
+
+' Writer hierarchy (green)
+class Writer #lightgreen
+class OutputStreamWriter #lightgreen
+class FileWriter #lightgreen
+class BufferedWriter #lightgreen
+class PrintWriter #lightgreen
+
+' Inheritance relationships
+Object <|-- Reader
+Object <|-- Writer
+
+Reader <|-- InputStreamReader
+InputStreamReader <|-- FileReader
+Reader <|-- BufferedReader
+
+Writer <|-- OutputStreamWriter
+OutputStreamWriter <|-- FileWriter
+Writer <|-- BufferedWriter
+Writer <|-- PrintWriter
+
+' Optional: Add note for context
+note right of Object
+  Java I/O Class Hierarchy
+  Character-based streams
+end note
+
+@enduml
