@@ -2,17 +2,17 @@ package multithread.countdownlatch;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class CountDownLatchTest {
 
     @Test
     public void LatchExample() throws InterruptedException {
-
         CountDownLatch countDownLatch = new CountDownLatch(3);
-
         for (int i = 0; i < 3; i++) {
             new Thread(
                     () -> {
@@ -36,6 +36,39 @@ class CountDownLatchTest {
         System.out.println("Main Thread waits for all workers to finish");
         countDownLatch.await();
         System.out.println("All workers finished! Main thread proceeds");
+        assertEquals(0, countDownLatch.getCount());
+    }
+
+    @Test
+    public void allThreadsStartAtSameTime() throws InterruptedException {
+        int numberOfThreads = 5;
+        CountDownLatch startSignal = new CountDownLatch(1);
+        CountDownLatch endSignal = new CountDownLatch(numberOfThreads);
+        ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
+        try {
+            for (int i = 0; i < numberOfThreads; i++) {
+                executorService.submit(() -> {
+                    try {
+                        startSignal.await();
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    } finally {
+                        endSignal.countDown();
+                    }
+                });
+
+            }
+        } finally {
+            executorService.shutdown();
+        }
+        startSignal.countDown();
+        endSignal.await();
+        assertAll(
+                () -> assertEquals(0, endSignal.getCount()),
+                () -> assertEquals(0, startSignal.getCount())
+        );
+
 
     }
 
