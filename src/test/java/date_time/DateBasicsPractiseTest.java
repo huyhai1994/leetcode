@@ -2,6 +2,8 @@ package date_time;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DateBasicsPractiseTest {
@@ -9,8 +11,7 @@ class DateBasicsPractiseTest {
 
     @Test
     void should_return_today() {
-
-
+        assertEquals(LocalDate.now(), service.getToday());
     }
 
 }
