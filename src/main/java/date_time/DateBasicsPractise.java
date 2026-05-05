@@ -1,6 +1,5 @@
 package date_time;
 
-
 import java.time.LocalDate;
 
 public class DateBasicsPractise {
@@ -8,5 +7,10 @@ public class DateBasicsPractise {
     public LocalDate getToday() {
         return LocalDate.now();
     }
+
+    public LocalDate getDateAfterDays(int days) {
+        return LocalDate.now().plusDays(days);
+    }
+
 
 }

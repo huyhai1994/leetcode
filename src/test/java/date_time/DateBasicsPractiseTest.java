@@ -14,4 +14,25 @@ class DateBasicsPractiseTest {
         assertEquals(LocalDate.now(), service.getToday());
     }
 
+    @Test
+    void should_return_date_after_7_days() {
+        LocalDate expect = LocalDate.now().plusDays(7);
+        LocalDate actual = service.getDateAfterDays(7);
+        assertEquals(expect, actual);
+    }
+
+    @Test
+    void should_return_same_day_when_add_0_day() {
+        LocalDate expect = LocalDate.now();
+        LocalDate actual = service.getDateAfterDays(0);
+        assertEquals(expect, actual);
+    }
+
+    @Test
+    void should_return_previous_day_when_add_negative_day() {
+        LocalDate expect = LocalDate.now().minusDays(7);
+        LocalDate actual = service.getDateAfterDays(-7);
+        assertEquals(expect, actual);
+    }
+
 }
