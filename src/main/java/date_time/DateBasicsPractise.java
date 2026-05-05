@@ -12,5 +12,9 @@ public class DateBasicsPractise {
         return LocalDate.now().plusDays(days);
     }
 
+    public LocalDate getDateBeforeDays(int days) {
+        return LocalDate.now().minusDays(days);
+    }
+
 
 }
