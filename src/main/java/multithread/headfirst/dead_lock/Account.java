@@ -1,0 +1,24 @@
+package multithread.headfirst.dead_lock;
+
+
+class Account {
+    double balance;
+    int id;
+
+    public Account(int id, double balance) {
+        this.balance = balance;
+        this.id = id;
+    }
+
+    void withdraw(double amount) {
+        balance -= amount;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+}
+
+
+
+
