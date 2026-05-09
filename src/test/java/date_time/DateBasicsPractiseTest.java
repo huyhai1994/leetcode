@@ -63,4 +63,11 @@ class DateBasicsPractiseTest {
         assertEquals(expect, actual);
     }
 
+    @Test
+    void should_return_current_datetime_not_null() {
+        LocalDate expect = LocalDate.now();
+        LocalDate actual = service.getCurrentDateTime();
+        assertEquals(expect, actual);
+    }
+
 }

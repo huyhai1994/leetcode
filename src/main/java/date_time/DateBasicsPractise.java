@@ -16,5 +16,9 @@ public class DateBasicsPractise {
         return LocalDate.now().minusDays(days);
     }
 
+    public LocalDate getCurrentDateTime() {
+        return LocalDate.now();
+    }
+
 
 }
