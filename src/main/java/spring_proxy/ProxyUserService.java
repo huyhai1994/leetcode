@@ -13,6 +13,7 @@ public class ProxyUserService extends UserService {
             log.info("[ProxyUserService] - [saveUser] - commit");
         } catch (Exception e) {
             log.error("[ProxyUserService] - [saveUser] - rollback");
+
         }
     }
 }
