@@ -6,7 +6,7 @@ import java.util.concurrent.*;
 
 @Slf4j
 public class Main {
-    private static final long SLEEP_TIME = 1;
+    private static final long SLEEP_TIME = 10;
 
     public static void main(String[] args) {
 
