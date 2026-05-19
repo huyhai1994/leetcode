@@ -3,6 +3,9 @@ package optional;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,8 +43,30 @@ class FoundationTest {
     }
 
     @Test
-    void demo_or_else(){
+    void demo_or_else() {
         Optional<String> optionalOrElse = Optional.empty();
         assertEquals(UNKNOWN, optionalOrElse.orElse("unknown"));
+    }
+
+    @Test
+    void demo_or_else_has_value() {
+        Optional<String> optionalOrElse = Optional.of("backend");
+        assertEquals("backend", optionalOrElse.orElse(expensiveCall()));
+    }
+
+    private String expensiveCall() {
+        System.out.println("Expensive call started!!!");
+        return "unknown";
+    }
+
+    @Test
+    void demo_or_else_get() {
+        Optional<String> optionalOrElse = Optional.empty();
+        AtomicBoolean supplierCalled = new AtomicBoolean(false);
+        Supplier<String> supplier = () -> {
+            supplierCalled.set(true);
+            return "Big Computation Result";
+        };
+        assertEquals("Big Computation Result", optionalOrElse.orElseGet(supplier));
     }
 }
