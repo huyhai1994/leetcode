@@ -26,12 +26,6 @@ class FoundationTest {
     }
 
     @Test
-    void test_is_present_or_else() {
-        Optional<String> emptyValue = Optional.empty();
-        assertEquals("fallback", emptyValue.ifPresentOrElse(););
-    }
-
-    @Test
     void user_null_return_unknown() {
         assertEquals(UNKNOWN, Foundation.getUserEmail(null));
     }
