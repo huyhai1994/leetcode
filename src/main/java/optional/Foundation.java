@@ -1,16 +1,12 @@
 package optional;
 
 
+import java.util.Optional;
+
 public class Foundation {
     public static String getUserEmail(User user) {
-        if (user == null) {
-            return "unknown";
-        }
-
-        if (user.getEmail() == null) {
-            return "unknown";
-        }
-
-        return user.getEmail();
+        return Optional.ofNullable(user)
+                .map(User::getEmail)
+                .orElse("unknown");
     }
 }
