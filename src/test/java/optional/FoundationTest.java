@@ -26,6 +26,13 @@ class FoundationTest {
     }
 
     @Test
+    void test_optional_filter() {
+        Optional<String> filteredValue = Optional.of("backend");
+        String result = filteredValue.filter(s -> s.length() > 100).orElse("empty");
+        assertEquals("empty", result);
+    }
+
+    @Test
     void user_null_return_unknown() {
         assertEquals(UNKNOWN, Foundation.getUserEmail(null));
     }
