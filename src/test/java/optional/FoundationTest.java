@@ -1,5 +1,6 @@
 package optional;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -11,6 +12,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FoundationTest {
     private static final String UNKNOWN = "unknown";
+
+    /**
+     * The <code>isPresent() </code>method in Java's <code> java.util.Optional</code> class returns a boolean value indicating whether a value is contained in the Optional object.  It returns true if a non-null value is present and false if the Optional is empty.
+     * This method is the standard way to check for the existence of a value, as <code>Optional.empty()</code> instances are not guaranteed to be singletons, making direct equality checks <code> (e.g., ==)</code> unreliable.
+     */
+    @Test
+    void test_is_present() {
+        Optional<String> presentValue = Optional.of("Hello");
+        Optional<String> emptyValue = Optional.empty();
+        assertAll(() -> assertTrue(presentValue.isPresent()),
+                () -> assertFalse(emptyValue.isPresent()));
+    }
+
+    @Test
+    void test_is_present_or_else() {
+        Optional<String> emptyValue = Optional.empty();
+        assertEquals("fallback", emptyValue.ifPresentOrElse(););
+    }
 
     @Test
     void user_null_return_unknown() {
