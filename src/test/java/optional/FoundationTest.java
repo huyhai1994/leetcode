@@ -38,4 +38,10 @@ class FoundationTest {
                 )
         );
     }
+
+    @Test
+    void demo_or_else(){
+        Optional<String> optionalOrElse = Optional.empty();
+        assertEquals(UNKNOWN, optionalOrElse.orElse("unknown"));
+    }
 }
