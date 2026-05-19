@@ -2,6 +2,8 @@ package optional;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FoundationTest {
@@ -24,5 +26,16 @@ class FoundationTest {
         User user = new User();
         user.setEmail("email content!");
         assertEquals("email content!", Foundation.getUserEmail(user));
+    }
+
+    @Test
+    void should_not_be_empty() {
+        Optional<String> shouldNotBeEmpty = Optional.empty();
+        assertThrows(
+                IllegalStateException.class,
+                () -> shouldNotBeEmpty.orElseThrow(
+                        () -> new IllegalStateException("This should not happen!!!")
+                )
+        );
     }
 }
