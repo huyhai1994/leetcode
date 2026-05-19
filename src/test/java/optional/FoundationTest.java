@@ -69,4 +69,10 @@ class FoundationTest {
         };
         assertEquals("Big Computation Result", optionalOrElse.orElseGet(supplier));
     }
+
+    @Test
+    void demo_or_else_throw() {
+        Optional<String> optionalOrElseThrows = Optional.empty();
+        assertThrows(IllegalStateException.class, () -> optionalOrElseThrows.orElseThrow(IllegalStateException::new));
+    }
 }
