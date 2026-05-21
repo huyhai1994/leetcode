@@ -20,4 +20,9 @@ class DaysTest {
     void should_be_equals() {
         assertTrue(Days.MONDAY == Days.MONDAY);
     }
+
+    @Test
+    void should_return_custom_to_string_value(){
+        assertEquals("Hello, It's Monday", Days.MONDAY.toString());
+    }
 }

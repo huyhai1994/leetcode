@@ -1,7 +1,12 @@
 package java_enum;
 
 public enum Days {
-    MONDAY,
+    MONDAY {
+        @Override
+        public String toString() {
+            return "Hello, It's Monday";
+        }
+    },
     TUESDAY,
     WEDNESDAY,
     THURSDAY,
