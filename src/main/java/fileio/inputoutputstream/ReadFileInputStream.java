@@ -29,7 +29,7 @@ public class ReadFileInputStream {
         }
 
         if (fileSize > LARGE_FILE_SIZE) return;
-        try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1)) {
+        try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             while (true) {
                 if (isEndOfFile(br)) break;
             }
