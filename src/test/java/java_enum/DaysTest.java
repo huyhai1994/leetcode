@@ -22,7 +22,12 @@ class DaysTest {
     }
 
     @Test
-    void should_return_custom_to_string_value(){
+    void should_return_custom_to_string_value() {
         assertEquals("Hello, It's Monday", Days.MONDAY.toString());
+    }
+
+    @Test
+    void monday_is_instance_of_day() {
+        assertTrue(Days.MONDAY instanceof Days);
     }
 }
