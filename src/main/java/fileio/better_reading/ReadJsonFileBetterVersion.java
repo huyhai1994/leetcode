@@ -9,11 +9,11 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class ReadJsonFileBetterVersion {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Gson gson = new Gson();
         Type listType = new TypeToken<List<Cookie>>() {
         }.getType();
-        List<Cookie> cookies = gson.fromJson(new FileReader("cookies_prod.json"),listType);
+        List<Cookie> cookies = gson.fromJson(new FileReader("cookies_prod.json"), listType);
 
     }
 }
