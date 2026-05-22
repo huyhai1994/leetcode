@@ -30,4 +30,9 @@ class DaysTest {
     void monday_is_instance_of_day() {
         assertTrue(Days.MONDAY instanceof Days);
     }
+
+    @Test
+    void days_values_should_return_all_days() {
+        assertEquals(7, Days.values().length);
+    }
 }
