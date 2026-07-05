@@ -1,0 +1,70 @@
+@startuml
+title CountDownLatch ready -> start -> done with fork
+
+|Main Thread|
+start
+:workerCount = 3;
+:ready = new CountDownLatch(3);
+:startGate = new CountDownLatch(1);
+:done = new CountDownLatch(3);
+:executorService = Executors.newFixedThreadPool(3);
+
+:Submit 3 workers;
+
+fork
+  |Worker 1|
+  :log "Worker 1 preparing";
+  :TimeUnit.SECONDS.sleep(1);
+  :log "Worker 1 ready";
+  :ready.countDown();
+  :log "Worker 1 waiting for start";
+  :startGate.await();
+  :log "Worker 1 started";
+  :TimeUnit.SECONDS.sleep(3);
+  :log "Worker 1 finished";
+  :done.countDown();
+
+fork again
+  |Worker 2|
+  :log "Worker 2 preparing";
+  :TimeUnit.SECONDS.sleep(1);
+  :log "Worker 2 ready";
+  :ready.countDown();
+  :log "Worker 2 waiting for start";
+  :startGate.await();
+  :log "Worker 2 started";
+  :TimeUnit.SECONDS.sleep(3);
+  :log "Worker 2 finished";
+  :done.countDown();
+
+fork again
+  |Worker 3|
+  :log "Worker 3 preparing";
+  :TimeUnit.SECONDS.sleep(1);
+  :log "Worker 3 ready";
+  :ready.countDown();
+  :log "Worker 3 waiting for start";
+  :startGate.await();
+  :log "Worker 3 started";
+  :TimeUnit.SECONDS.sleep(3);
+  :log "Worker 3 finished";
+  :done.countDown();
+
+fork again
+  |Main Thread|
+  :log "Main waits for all workers ready";
+  :ready.await();
+  :log "All workers are ready";
+  :TimeUnit.SECONDS.sleep(2);
+  :log "Main opens start gate";
+  :startGate.countDown();
+
+  :log "Main waits for all workers done";
+  :done.await();
+  :log "All workers finished";
+  :executorService.shutdown();
+
+end fork
+
+stop
+@enduml
