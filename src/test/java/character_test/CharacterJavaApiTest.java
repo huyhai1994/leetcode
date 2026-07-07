@@ -38,6 +38,17 @@ class CharacterJavaApiTest {
     }
 
     @Test
+    void whenCharacterIsNotLetterOrDigit_ThenReturnTrue() {
+        assertAll(
+                () -> assertFalse(Character.isLetterOrDigit(',')),
+                () -> assertFalse(Character.isLetterOrDigit(':')),
+                () -> assertFalse(Character.isLetterOrDigit('/')),
+                () -> assertFalse(Character.isLetterOrDigit('~')),
+                () -> assertFalse(Character.isLetterOrDigit(' '))
+        );
+    }
+
+    @Test
     void whenIsWhiteSpace_thenReturnTrue() {
         assertTrue(Character.isWhitespace(' '));
         assertTrue(Character.isWhitespace('\n'));
@@ -63,5 +74,18 @@ class CharacterJavaApiTest {
     @Test
     void whenConcertUpperCaseToLowerCase_thenReturnLowerCase() {
         assertEquals('c', Character.toLowerCase('C'));
+    }
+
+    @Test
+    void whenConvertOneNumber_thenReturnCharacterA() {
+        int number = 1;
+        char letter = (char) ('A' + (number - 1));
+        assertEquals('A', letter);
+    }
+
+    @Test
+    void whenConvert65_thenReturnCharacterA() {
+        int number = 65;
+        assertEquals('A', (char) number);
     }
 }
