@@ -88,4 +88,17 @@ class CharacterJavaApiTest {
         int number = 65;
         assertEquals('A', (char) number);
     }
+
+    @Test
+    void whenConvertCharacterA_thenReturnNumberOne() {
+        char character = 'A';
+        assertEquals(1, character - ('A' - 1));
+    }
+
+    @Test
+    void whenConvertCharacterB_thenReturnNumberTwo() {
+        char character = 'B';
+        assertEquals(2, character - ('A' - 1));
+    }
+
 }
