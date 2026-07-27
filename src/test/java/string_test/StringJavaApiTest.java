@@ -5,6 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StringJavaApiTest {
+
+    @Test
+    void shouldReturnExtensionString() {
+        String filename = "test.txt";
+        assertEquals("txt", filename.substring(filename.lastIndexOf(".") + 1));
+    }
+
     @Test
     void whenStringIsEmpty_thenReturnTrue() {
         String emptyString = "";
@@ -20,6 +27,11 @@ public class StringJavaApiTest {
     void whenGetCharAtIndexOne_thenReturnECharacter() {
         assertEquals('e', "hello".charAt(1));
         assertTrue('e' == 'e');
+    }
+
+    @Test
+    void whenSubtractLowercaseA_thenReturnNumber() {
+        assertEquals(2, 'c' - 'a');
     }
 
 
