@@ -16,7 +16,8 @@ public class Shop {
     }
 
     public double getPrice(String product) {
-        throw new UnsupportedOperationException();
+        delay();
+        return calculatePrice(product);
     }
 
     public static void delay() {
@@ -35,18 +36,7 @@ public class Shop {
     }
 
     public Future<Double> getPriceAsync(String product) {
-        CompletableFuture<Double> futurePrice = new CompletableFuture<>();
-        Thread thread = new Thread(() -> {
-            try {
-                double price = calculatePrice(product);
-                futurePrice.complete(price);
-            } catch (Exception e) {
-                futurePrice.completeExceptionally(e);
-            }
-        });
-        thread.setName("New Forked thread");
-        thread.start();
-        return futurePrice;
+        return CompletableFuture.supplyAsync(() -> calculatePrice(product));
     }
 
     public String getShopName() {
